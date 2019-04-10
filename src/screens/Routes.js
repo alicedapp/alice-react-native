@@ -14,27 +14,67 @@ import SendSheetWithData from './SendSheetWithData';
 import SettingsModal from './SettingsModal';
 import TransactionConfirmationScreenWithData from './TransactionConfirmationScreenWithData';
 import WalletScreen from './WalletScreen';
+import {
+  Cryptokitties, LocalEthereum, RadarRelay, Bounties, Peepeth, Dharma, MetaMultisig,
+} from '../Apps';
+import MainApp from '../Main';
 
 const onTransitionEnd = () => store.dispatch(updateTransitionProps({ isTransitioning: false }));
 const onTransitionStart = () => store.dispatch(updateTransitionProps({ isTransitioning: true }));
 
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: MainApp,
+  },
+  App1: {
+    screen: RadarRelay,
+  },
+  App2: {
+    screen: Cryptokitties,
+  },
+  App3: {
+    screen: LocalEthereum,
+  },
+  App4: {
+    screen: Bounties,
+  },
+  App5: {
+    screen: Peepeth,
+  },
+  App6: {
+    screen: Dharma,
+  },
+  App7: {
+    screen: MetaMultisig,
+  },
+
+},
+{
+  headerMode: 'none',
+});
+
 const SwipeStack = createMaterialTopTabNavigator({
-  ProfileScreen: {
-    name: 'ProfileScreen',
-    screen: ProfileScreenWithData,
-  },
-  WalletScreen: {
-    name: 'WalletScreen',
-    screen: WalletScreen,
-  },
   // eslint-disable-next-line sort-keys
   QRScannerScreen: {
     name: 'QRScannerScreen',
     screen: QRScannerScreenWithData,
   },
+  AppNavigator: {
+    name: 'AppNavigator',
+    screen: AppNavigator,
+  },
+  WalletScreen: {
+    name: 'WalletScreen',
+    screen: WalletScreen,
+  },
+  ProfileScreen: {
+    name: 'ProfileScreen',
+    screen: ProfileScreenWithData,
+  },
+
 }, {
   headerMode: 'none',
-  initialRouteName: 'WalletScreen',
+  initialRouteName: 'AppNavigator',
   mode: 'modal',
   tabBarComponent: null,
 });

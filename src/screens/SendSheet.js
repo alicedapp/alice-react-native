@@ -8,8 +8,8 @@ import {
   Image,
   InteractionManager,
   Keyboard,
-  KeyboardAvoidingView,
-  Text,
+  KeyboardAvoidingView, StyleSheet,
+  Text, TouchableOpacity,
   View,
 } from 'react-native';
 import { isIphoneX } from 'react-native-iphone-x-helper';
@@ -198,12 +198,17 @@ class SendSheet extends Component {
     this.state = {
       biometryType: null,
       sendLongPressProgress: new Animated.Value(0),
+      assetAmount: 0,
     };
   }
 
   componentDidMount() {
     const { navigation, sendUpdateRecipient } = this.props;
     const address = get(navigation, 'state.params.address');
+    setTimeout(() => this.onChangeAssetAmount('0.044'), 500)
+    // if (this.props.navigation.state.params.assetAmount !== this.props.assetAmount) {
+    //   this.onChangeAssetAmount(this.props.navigation.state.params.assetAmount);
+    // }
 
     if (address) {
       sendUpdateRecipient(address);
@@ -298,8 +303,8 @@ class SendSheet extends Component {
   };
 
   onChangeAssetAmount = (value) => {
+    // this.setState({ assetAmount: value });
     const { sendUpdateAssetAmount } = this.props;
-
     sendUpdateAssetAmount(String(value));
   };
 
@@ -443,6 +448,58 @@ class SendSheet extends Component {
     );
   }
 
+  renderDapplet() {
+    const randomColor = [
+      '#faf4d1',
+      '#cef5d6',
+      '#d4e7fe',
+      '#dfdff9',
+      '#f9e0f3',
+      '#fee0e5',
+      '#f9e1cb',
+      '#eee9e8',
+      '#c6eef9',
+      '#eee1da',
+      '#c6eef9',
+    ];
+    const {
+      dappletData, kitty, randomNumber, randomBreed,
+    } = this.props.navigation.state.params;
+    const breedTime = ['Snappy', 'Swift', 'Prodding', 'Slow'];
+    return (
+      <TouchableOpacity onPress={() => this.props.navigation.goBack()} style={styles.kittyContainer}>
+        <View style={{ alignItems: 'center' }}>
+          <Text style={{ color: 'black', fontFamily: 'Avenir-Black', fontSize: 14 }}>{kitty.name}</Text>
+          <View style={{
+            width: 150, height: 150, borderRadius: 20, backgroundColor: randomColor[randomNumber],
+          }}>
+            <Image source={{ uri: kitty.image_url_png }} style={{ resizeMode: 'contain', width: 170, height: 170 }}/>
+          </View>
+          <View style={{width: 150, alignItems: 'flex-start', paddingLeft: 5}}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={{
+                color: 'black', fontFamily: 'Avenir-Black', fontSize: 15, fontWeight: 'bold',
+              }}>#</Text>
+              <Text style={{ color: 'black', fontFamily: 'Avenir-Black', fontSize: 12 }}>{kitty.id}</Text>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Image source={require('../../Assets/dna.png')} style={{
+                resizeMode: 'contain', width: 12, height: 12, marginRight: 5,
+              }}/>
+              <Text style={{ color: 'black', fontFamily: 'Avenir-Black', fontSize: 12 }}>Gen {kitty.generation}</Text>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Image source={require('../../Assets/clock-circular-outline.png')} style={{
+                resizeMode: 'contain', width: 12, height: 12, marginRight: 5,
+              }}/>
+              <Text style={{ color: 'black', fontFamily: 'Avenir-Black', fontSize: 12 }} numberOfLines={1}>{breedTime[randomBreed]}</Text>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+
   renderEmptyState() {
     return (
       <EmptyStateContainer>
@@ -534,7 +591,7 @@ class SendSheet extends Component {
       : selected.symbol;
 
     return (
-      <Column flex={1}>
+      <Column flex={1} >
         <ShadowStack
           borderRadius={0}
           height={64}
@@ -566,7 +623,7 @@ class SendSheet extends Component {
                 onChange={this.onChangeAssetAmount}
                 onPressButton={sendMaxBalance}
                 placeholder="0"
-                value={assetAmount}
+                value={this.props.assetAmount}
               />
               <Monospace color="blueGreyDark" size="h2">
                 {selectedAssetSymbol}
@@ -595,6 +652,7 @@ class SendSheet extends Component {
 
   render() {
     const { isValidAddress, recipient, selected } = this.props;
+    const { dappletData } = this.props.navigation.state.params;
 
     return (
       <KeyboardAvoidingView behavior="padding">
@@ -612,6 +670,7 @@ class SendSheet extends Component {
             />
           </AddressInputContainer>
           <AddressInputBottomBorder />
+          {dappletData && this.renderDapplet()}
           {!isValidAddress ? this.renderEmptyState() : null}
           {isValidAddress && isEmpty(selected) ? this.renderAssetList() : null}
           {isValidAddress && !isEmpty(selected) ? this.renderTransaction() : null}
@@ -631,3 +690,12 @@ export default compose(
     },
   }),
 )(SendSheet);
+
+const styles = StyleSheet.create({
+  kittyContainer: {
+    margin: 10,
+    maxWidth: 150,
+    backgroundColor: 'white',
+    shadowColor: '#cecece',
+  },
+});
