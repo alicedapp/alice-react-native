@@ -53,11 +53,15 @@ class Explore extends React.Component {
       return (
         <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center' }}>
           <View  style={{
-            flex:1, marginTop: -40, resizeMode: 'contain', paddingTop: 90,
+            flex:1, marginTop: -40, resizeMode: 'contain', paddingTop: 40,
           }}>
-            <TouchableOpacity style={{}} onPress={() => navigation.navigate('Apps')}>
-              <Image source={require('../../../Assets/back-button.png')} style={{ resizeMode: 'contain', width: 20, height: 20 }}/>
-            </TouchableOpacity>
+            <View style={{
+              margin: 20, marginTop: 50, marginBottom: 0, backgroundColor: 'transparent',
+            }}>
+              <TouchableOpacity style={{}} onPress={() => navigation.navigate('Apps')}>
+                <Image source={require('../../../Assets/back-button.png')} style={{ resizeMode: 'contain', width: 20, height: 20 }}/>
+              </TouchableOpacity>
+            </View>
             <View style={{ marginBottom: 10, marginLeft: 15, flexDirection: 'row', justifyContent: 'space-around' }}>
               <View style={{ flexDirection: 'row', alignItems: 'center'}}>
                 <Text style={{ fontSize: 30, color: '#5A28C6' }}>{this.state.bountiesInfo.count}</Text>

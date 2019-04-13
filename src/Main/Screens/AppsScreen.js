@@ -64,10 +64,40 @@ export default class AppsScreen extends Component<Props> {
               <Text style={styles.appText}>Bounties</Text>
             </View>
             <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#000000' }]} onPress={() => this.props.navigation.navigate('App7')}>
-                <Image source={require('../../../Assets/new-chat-logo.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#0a0817' }]} onPress={() => this.props.navigation.navigate('App10')}>
+                <Image source={require('../../../Assets/synthetix.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
               </TouchableOpacity>
-              <Text style={styles.appText}>MetaMulitisg</Text>
+              <Text style={styles.appText}>Synthetix</Text>
+            </View>
+            <View style={styles.appIcon}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff' }]} onPress={() => this.props.navigation.navigate('App7')}>
+                <Image source={require('../../../Assets/augur-logo.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
+              </TouchableOpacity>
+              <Text style={styles.appText}>Augur</Text>
+            </View>
+            <View style={styles.appIcon}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#faa8ff' }]} onPress={() => this.props.navigation.navigate('App12')}>
+                <Image source={require('../../../Assets/uniswap.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
+              </TouchableOpacity>
+              <Text style={styles.appText}>UniSwap</Text>
+            </View>
+            <View style={styles.appIcon}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#0D023B' }]} onPress={() => this.props.navigation.navigate('App9')}>
+                <Image source={require('../../../Assets/gitcoin.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
+              </TouchableOpacity>
+              <Text style={styles.appText}>GitCoin</Text>
+            </View>
+            <View style={styles.appIcon}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff'}]} onPress={() => this.props.navigation.navigate('App7')}>
+                <Image source={require('../../../Assets/decentraland.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
+              </TouchableOpacity>
+              <Text style={styles.appText}>Decentraland</Text>
+            </View>
+            <View style={styles.appIcon}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#efefef'}]} onPress={() => this.props.navigation.navigate('App11')}>
+                <Image source={require('../../../Assets/aragon.png')} style={{ width: 50, height: 50., resizeMode: 'contain' }}/>
+              </TouchableOpacity>
+              <Text style={styles.appText}>Aragon</Text>
             </View>
           </View>
           <Text style={styles.headingText}>Trending Apps</Text>

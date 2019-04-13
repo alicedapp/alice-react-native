@@ -88,7 +88,7 @@ export default class ChatScreen extends Component<Props> {
                 <Image source={require('../../../../Assets/send-button.png')} style={{flex: 1, resizeMode: 'contain', height: 20, width: 20}}/>
               </TouchableHighlight>
             </View>
-            <Modal isVisible={this.state.modalVisible} onBackdropPress={this.closeModal} closeModal={this.closeModal}/>
+            <Modal app={'ethereum'} isVisible={this.state.modalVisible} onBackdropPress={this.closeModal} closeModal={this.closeModal}/>
           </View>
         </TouchableWithoutFeedback>
       </View>

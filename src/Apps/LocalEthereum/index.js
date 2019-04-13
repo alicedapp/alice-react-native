@@ -155,35 +155,35 @@ class SettingsScreen extends React.Component {
 }
 
 const HomeScreen2 = createStackNavigator({
-  Home: {
-    screen: HomeScreen,
+    Home: {
+      screen: HomeScreen,
+    },
+    Buyers: {
+      screen: BuyScreen,
+    },
   },
-  Buyers: {
-    screen: BuyScreen,
-  },
-},
-{
-  headerMode: 'none',
-  navigationOptions: {
-    tabBarIcon: ({ tintColor }) => <Icon icon={require('../../../Assets/search.png')} size={30}/>,
-  },
-});
+  {
+    headerMode: 'none',
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => <Icon icon={require('../../../Assets/search.png')} size={30}/>,
+    },
+  });
 
 
 export default createBottomTabNavigator({
-  Home: HomeScreen2,
-  Trade: SettingsScreen,
-},
-{
-  tabBarOptions: {
-    showLabel: false,
-    backgroundColor: 'white',
-    borderColor: 'white',
-    indicatorStyle: {
-      backgroundColor: '#eee',
-    },
+    Home: HomeScreen2,
+    Trade: SettingsScreen,
   },
-});
+  {
+    tabBarOptions: {
+      showLabel: false,
+      backgroundColor: 'white',
+      borderColor: 'white',
+      indicatorStyle: {
+        backgroundColor: '#eee',
+      },
+    },
+  });
 
 const styles = StyleSheet.create({
   modal: {

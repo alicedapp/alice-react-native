@@ -68,6 +68,7 @@
     "react-native-linear-gradient": "^2.4.2",
     "react-native-mail": "^3.0.6",
     "react-native-matomo": "git+https://github.com/BonifyByForteil/react-native-matomo.git",
+    "react-native-modal": "^9.0.0",
     "react-native-os": "^1.2.1",
     "react-native-permissions": "^1.1.1",
     "react-native-qrcode-scanner": "mikedemarais/react-native-qrcode-scanner#2ca70b8c64afb87e712aba578e11409c6406069e",

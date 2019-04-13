@@ -2,7 +2,7 @@ import React from 'react';
 import { Dimensions, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 let { height, width } = Dimensions.get('window');
 
-export default class KittyScreen extends React.Component {
+export default class TradeScreen extends React.Component {
 
   render() {
     const { navigation } = this.props;

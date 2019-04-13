@@ -15,7 +15,7 @@ import SettingsModal from './SettingsModal';
 import TransactionConfirmationScreenWithData from './TransactionConfirmationScreenWithData';
 import WalletScreen from './WalletScreen';
 import {
-  Cryptokitties, LocalEthereum, RadarRelay, Bounties, Peepeth, Dharma, MetaMultisig,
+  Cryptokitties, LocalEthereum, RadarRelay, Bounties, Peepeth, Dharma, MetaMultisig, Uniswap, Gitcoin, Synthetix, Aragon
 } from '../Apps';
 import MainApp from '../Main';
 
@@ -46,6 +46,21 @@ const AppNavigator = createStackNavigator({
   },
   App7: {
     screen: MetaMultisig,
+  },
+  App8: {
+    screen: Uniswap,
+  },
+  App9: {
+    screen: Gitcoin,
+  },
+  App10: {
+    screen: Synthetix,
+  },
+  App11: {
+    screen: Aragon,
+  },
+  App12: {
+    screen: Uniswap,
   },
 
 },
