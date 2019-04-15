@@ -25,17 +25,75 @@ PODS:
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.1)
   - FLAnimatedImage (1.0.12)
-  - GoogleToolboxForMac/Defines (2.1.4)
-  - GoogleToolboxForMac/Logger (2.1.4):
-    - GoogleToolboxForMac/Defines (= 2.1.4)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
-    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - Google-Maps-iOS-Utils (2.1.0):
+    - Google-Maps-iOS-Utils/Clustering (= 2.1.0)
+    - Google-Maps-iOS-Utils/Geometry (= 2.1.0)
+    - Google-Maps-iOS-Utils/Heatmap (= 2.1.0)
+    - Google-Maps-iOS-Utils/QuadTree (= 2.1.0)
+    - GoogleMaps
+  - Google-Maps-iOS-Utils/Clustering (2.1.0):
+    - Google-Maps-iOS-Utils/QuadTree
+    - GoogleMaps
+  - Google-Maps-iOS-Utils/Geometry (2.1.0):
+    - GoogleMaps
+  - Google-Maps-iOS-Utils/Heatmap (2.1.0):
+    - Google-Maps-iOS-Utils/QuadTree
+    - GoogleMaps
+  - Google-Maps-iOS-Utils/QuadTree (2.1.0):
+    - GoogleMaps
+  - GoogleAppMeasurement (5.4.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - GoogleMaps (2.5.0):
+    - GoogleMaps/Maps (= 2.5.0)
+  - GoogleMaps/Base (2.5.0)
+  - GoogleMaps/Maps (2.5.0):
+    - GoogleMaps/Base
+  - GoogleToolboxForMac/Defines (2.2.0)
+  - GoogleToolboxForMac/Logger (2.2.0):
+    - GoogleToolboxForMac/Defines (= 2.2.0)
+  - "GoogleToolboxForMac/NSData+zlib (2.2.0)":
+    - GoogleToolboxForMac/Defines (= 2.2.0)
+  - GoogleUtilities (5.3.7):
+    - GoogleUtilities/AppDelegateSwizzler (= 5.3.7)
+    - GoogleUtilities/Environment (= 5.3.7)
+    - GoogleUtilities/ISASwizzler (= 5.3.7)
+    - GoogleUtilities/Logger (= 5.3.7)
+    - GoogleUtilities/MethodSwizzler (= 5.3.7)
+    - GoogleUtilities/Network (= 5.3.7)
+    - "GoogleUtilities/NSData+zlib (= 5.3.7)"
+    - GoogleUtilities/Reachability (= 5.3.7)
+    - GoogleUtilities/SwizzlerTestHelpers (= 5.3.7)
+    - GoogleUtilities/UserDefaults (= 5.3.7)
+  - GoogleUtilities/AppDelegateSwizzler (5.3.7):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (5.3.7)
+  - GoogleUtilities/ISASwizzler (5.3.7)
+  - GoogleUtilities/Logger (5.3.7):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (5.3.7):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (5.3.7):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (5.3.7)"
+  - GoogleUtilities/Reachability (5.3.7):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/SwizzlerTestHelpers (5.3.7)
+  - GoogleUtilities/UserDefaults (5.3.7):
+    - GoogleUtilities/Logger
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - Protobuf (3.6.1)
+  - Protobuf (3.7.0)
   - React (0.57.1):
     - React/Core (= 0.57.1)
   - react-native-blur (0.8.0):
@@ -45,6 +103,12 @@ PODS:
     - React
     - SDWebImage/Core
     - SDWebImage/GIF
+  - react-native-google-maps (0.24.0):
+    - Google-Maps-iOS-Utils (= 2.1.0)
+    - GoogleMaps (= 2.5.0)
+    - React
+  - react-native-maps (0.24.0):
+    - React
   - react-native-version-number (0.3.5):
     - React
   - React/Core (0.57.1):
@@ -56,14 +120,16 @@ PODS:
     - React/Core
   - RNDeviceInfo (0.21.5):
     - React
+  - RNFS (2.13.3):
+    - React
   - RNLanguages (3.0.2):
     - React
   - RNReanimated (1.0.0-alpha.12):
     - React
   - RNScreens (1.0.0-alpha.22):
     - React
-  - SDWebImage/Core (4.4.2)
-  - SDWebImage/GIF (4.4.2):
+  - SDWebImage/Core (4.4.6)
+  - SDWebImage/GIF (4.4.6):
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
   - yoga (0.57.1.React)
@@ -73,11 +139,18 @@ DEPENDENCIES:
   - Fabric (~> 1.7.11)
   - Firebase/Core (~> 5.3.0)
   - Firebase/Messaging (~> 5.3.0)
+  - Google-Maps-iOS-Utils (= 2.1.0)
+  - GoogleAppMeasurement (= 5.4)
+  - GoogleMaps (= 2.5.0)
+  - GoogleUtilities (= 5.3.7)
   - react-native-blur (from `../node_modules/react-native-blur`)
   - react-native-fast-image (from `../node_modules/react-native-fast-image`)
+  - react-native-google-maps (from `../node_modules/react-native-maps`)
+  - react-native-maps (from `../node_modules/react-native-maps`)
   - react-native-version-number (from `../node_modules/react-native-version-number`)
   - React/RCTImage (from `../node_modules/react-native`)
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
+  - RNFS (from `../node_modules/react-native-fs`)
   - RNLanguages (from `../node_modules/react-native-languages`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -93,7 +166,11 @@ SPEC REPOS:
     - FirebaseInstanceID
     - FirebaseMessaging
     - FLAnimatedImage
+    - Google-Maps-iOS-Utils
+    - GoogleAppMeasurement
+    - GoogleMaps
     - GoogleToolboxForMac
+    - GoogleUtilities
     - nanopb
     - Protobuf
     - SDWebImage
@@ -105,10 +182,16 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-blur"
   react-native-fast-image:
     :path: "../node_modules/react-native-fast-image"
+  react-native-google-maps:
+    :path: "../node_modules/react-native-maps"
+  react-native-maps:
+    :path: "../node_modules/react-native-maps"
   react-native-version-number:
     :path: "../node_modules/react-native-version-number"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
+  RNFS:
+    :path: "../node_modules/react-native-fs"
   RNLanguages:
     :path: "../node_modules/react-native-languages"
   RNReanimated:
@@ -127,20 +210,27 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
   FirebaseMessaging: 6894b8fe0a0cf26c3b13dad729f1131654ae0bdb
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  Google-Maps-iOS-Utils: c32891ff472eaaa1fca032beedafa1a013af7875
+  GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
+  GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
+  GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
+  GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
   react-native-blur: c35c1f6c2c76db7108bde7ed343bd2b01d64e0c0
   react-native-fast-image: cba3d9bf9c2cf8ddb643d887a686c53a5dd90a2c
+  react-native-google-maps: 77af0fa3b5325c72c107d054677911f6e6170496
+  react-native-maps: bb480348a3fe1e5a811fed1ba3387b329161c5cc
   react-native-version-number: 36c0d8eb57a275a6239a860f8dbab3d18299b0e0
   RNDeviceInfo: 568c5641057313b4912d08a7742ff0b2f753ed5c
+  RNFS: bbb1a64eb245763daf34aea86f97c97c4e85f74c
   RNLanguages: e3ae05ef105937645218272429dac0c3f7633451
   RNReanimated: 45d9313b7a62318ed00d60a811937321e43e076e
   RNScreens: 354046589421edc3d83d5c6212475bf1fb9a731d
-  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 7be72ba3b07d2e3155d66e1230b74ff28cec1672
+PODFILE CHECKSUM: f1c9bf9395d9c52999fb8d9266c5baf2458ba221
 
 COCOAPODS: 1.5.0

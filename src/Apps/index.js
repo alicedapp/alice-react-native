@@ -12,3 +12,6 @@ export { default as Uniswap } from './Uniswap';
 export { default as Gitcoin } from './Gitcoin';
 export { default as Synthetix } from './Synthetix';
 export { default as Aragon } from './Aragon';
+export { default as Decentraland } from './Decentraland';
+export { default as Qantas } from './Qantas';
+export { default as Augur } from './Augur';

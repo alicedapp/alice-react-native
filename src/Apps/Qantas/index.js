@@ -9,9 +9,9 @@ class HomeScreen extends React.Component {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white',
+        backgroundColor: '#F20000',
       }}>
-        <Image source={require('../../../Assets/wyre-1.png')} style={{
+        <Image source={require('../../../Assets/qnatas-logo.png')} style={{
           width: 80,
           height: 80,
           resizeMode: 'contain',
@@ -34,4 +34,13 @@ class SettingsScreen extends React.Component {
 export default createBottomTabNavigator({
   Home: HomeScreen,
   Trade: SettingsScreen,
-});
+},
+  {
+    tabBarOptions: {
+      style: {
+        backgroundColor: '#F20000'
+      }
+      ,
+      showLabel: false,
+    }
+  });

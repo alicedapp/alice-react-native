@@ -11,8 +11,8 @@ import {
   View,
 } from 'react-native';
 import Icon from '../../components/IconComponent';
-import TradeScreen from './Screens/TradeScreen'
-import MyKitties from './Screens/MyKitties'
+import TradeScreen from './Screens/TradeScreen';
+import MyKitties from './Screens/MyKitties';
 
 let { height, width } = Dimensions.get('window');
 
@@ -24,7 +24,7 @@ class HomeScreen extends React.Component {
 
   state = {
     kitties: null,
-    borderColor: '#e1e1e1'
+    borderColor: '#e1e1e1',
   };
 
   getKitties = async () => {
@@ -54,20 +54,6 @@ class HomeScreen extends React.Component {
       );
     }
     console.log('Kitties: ', this.state.kitties);
-    const randomColor = [
-      '#faf4d1',
-      '#cef5d6',
-      '#d4e7fe',
-      '#dfdff9',
-      '#f9e0f3',
-      '#fee0e5',
-      '#f9e1cb',
-      '#eee9e8',
-      '#c6eef9',
-      '#eee1da',
-      '#c6eef9',
-    ];
-    const breedTime = ['Snappy', 'Swift', 'Prodding', 'Slow'];
     return (
       <View style={{flex: 1}}>
         <View style={{margin: 20, marginTop: 50, marginBottom: 0, backgroundColor: 'transparent'}}>
@@ -101,7 +87,7 @@ class HomeScreen extends React.Component {
               </View>
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <TextInput placeholder='0.0' style={{flex: 4}}/>
-                <TouchableOpacity style={{flexDirection: 'row', flex: 3, height: 40, borderRadius: 25, alignItems: 'center', backgroundColor: '#ebf4ff', borderColor: '#2f80ed', borderWidth: 1, justifyContent: 'center' }}>
+                <TouchableOpacity style={{flexDirection: 'row', padding: 10, height: 40, borderRadius: 25, alignItems: 'center', backgroundColor: '#ebf4ff', borderColor: '#2f80ed', borderWidth: 1, justifyContent: 'center' }}>
                   <Text style={{color: '#2f80ed', fontSize: 15}}>Select a token</Text>
                   <Image source={require('../../../Assets/uniswap-dropdown.png')} style={{ resizeMode: 'contain', width: 15, height: 15,  }}/>
                 </TouchableOpacity>
@@ -111,7 +97,7 @@ class HomeScreen extends React.Component {
               <Text style={{color: '#aaa', padding: 20}}>Exchange Rate</Text>
             </View>
           </View>
-          <TouchableOpacity style={{backgroundColor: '#2f80ed', width: 250, height: 60, borderRadius: 40, alignItems: 'center', justifyContent: 'center'}}>
+          <TouchableOpacity style={{backgroundColor: '#2f80ed', width: 250, marginTop: 20, height: 60, borderRadius: 40, alignItems: 'center', justifyContent: 'center'}}>
             <Text style={{color: 'white', fontSize: 20}}>Swap</Text>
           </TouchableOpacity>
         </View>

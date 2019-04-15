@@ -10,6 +10,7 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+@import GoogleMaps;
 #import <Firebase.h>
 #import "RNFirebaseMessaging.h"
 #import "RNFirebaseNotifications.h"
@@ -18,10 +19,14 @@
 @interface AppDelegate() <FIRMessagingDelegate, UNUserNotificationCenterDelegate>
 @end
 
+#import <GoogleMaps/GoogleMaps.h>
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  
+  [GMSServices provideAPIKey:@"AIzaSyAmOTmYh-jPsGRTqvw5q07pHFqQScFBiFg"]; // add this line using the api key obtained from Google Console
   // Push Notifications
   //
   [FIRApp configure];
