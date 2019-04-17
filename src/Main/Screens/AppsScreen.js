@@ -20,7 +20,10 @@ export default class AppsScreen extends Component<Props> {
     RNFS.readDir(RNFS.MainBundlePath) // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
       .then((result) => {
         console.log('GOT RESULT', result);
-
+        result.map((res, i) => {
+          console.log('NAME: ', res.name)
+          console.log('NUMBER: ', i)
+        })
         // stat the first file
         return Promise.all([RNFS.stat(result[0].path), result[0].path]);
       })
@@ -47,10 +50,6 @@ export default class AppsScreen extends Component<Props> {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
-          <TextInput placeholder='Search' style={{
-            width: '100%', backgroundColor: '#d6d6d6', borderRadius: 10, height: 35, paddingLeft: 10, marginBottom: 10,
-          }}/>
-          <Text style={styles.headingText}>Apps</Text>
           <View style={styles.appsContainer}>
             <View style={styles.appIcon}>
               <TouchableOpacity style={styles.appSquare} onPress={() => this.props.navigation.navigate('App1')}>
@@ -124,9 +123,6 @@ export default class AppsScreen extends Component<Props> {
               </TouchableOpacity>
               <Text style={styles.appText}>Aragon</Text>
             </View>
-          </View>
-          <Text style={styles.headingText}>Trending Apps</Text>
-          <View style={styles.appsContainer}>
             <View style={styles.appIcon}>
               <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#dbe0ff' }]} onPress={() => this.props.navigation.navigate('App3')}>
                 <Image source={require('../../../Assets/localethereum.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
@@ -143,7 +139,7 @@ export default class AppsScreen extends Component<Props> {
               <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#37474f' }]} onPress={() => this.props.navigation.navigate('App100')}>
                 <Image source={require('../../../Assets/compound.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
               </TouchableOpacity>
-              <Text style={styles.appText}>Compound Fi...</Text>
+              <Text style={styles.appText}>Compound</Text>
             </View>
             <View style={styles.appIcon}>
               <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff' }]} onPress={() => this.props.navigation.navigate('App15')}>
