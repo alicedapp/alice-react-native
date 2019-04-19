@@ -205,7 +205,7 @@ class SendSheet extends Component {
   componentDidMount() {
     const { navigation, sendUpdateRecipient } = this.props;
     const address = get(navigation, 'state.params.address');
-    setTimeout(() => this.onChangeAssetAmount('0.044'), 500)
+    // setTimeout(() => this.onChangeAssetAmount('0.044'), 500)
     // if (this.props.navigation.state.params.assetAmount !== this.props.assetAmount) {
     //   this.onChangeAssetAmount(this.props.navigation.state.params.assetAmount);
     // }

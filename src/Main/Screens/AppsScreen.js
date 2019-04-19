@@ -12,7 +12,7 @@ export default class AppsScreen extends Component<Props> {
   static navigationOptions = ({ navigation }) => {
     const { navigate } = navigation;
     return {
-      tabBarIcon: ({ tintColor }) => <Icon icon="HomeGrey" size={30}/>,
+      tabBarIcon: ({ tintColor }) => <Icon icon="HomeGrey" size={45}/>,
     };
   };
 
@@ -57,12 +57,12 @@ export default class AppsScreen extends Component<Props> {
               </TouchableOpacity>
               <Text style={styles.appText}>Radar</Text>
             </View>
-            <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffd6f7' }]} onPress={() => this.props.navigation.navigate('App2')}>
-                <Image source={require('../../../Assets/cryptokitties.png')} style={{ width: 60, height: 60, resizeMode: 'contain' }}/>
-              </TouchableOpacity>
-              <Text style={styles.appText}>Cryptokitties</Text>
-            </View>
+            {/*<View style={styles.appIcon}>*/}
+              {/*<TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffd6f7' }]} onPress={() => this.props.navigation.navigate('App2')}>*/}
+                {/*<Image source={require('../../../Assets/cryptokitties.png')} style={{ width: 60, height: 60, resizeMode: 'contain' }}/>*/}
+              {/*</TouchableOpacity>*/}
+              {/*<Text style={styles.appText}>Cryptokitties</Text>*/}
+            {/*</View>*/}
             <View style={styles.appIcon}>
               <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#08072c' }]} onPress={() => this.props.navigation.navigate('App6')}>
                 <Image source={require('../../../Assets/dharma.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
@@ -99,12 +99,12 @@ export default class AppsScreen extends Component<Props> {
               </TouchableOpacity>
               <Text style={styles.appText}>Augur</Text>
             </View>
-            <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#faa8ff' }]} onPress={() => this.props.navigation.navigate('App12')}>
-                <Image source={require('../../../Assets/uniswap.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
-              </TouchableOpacity>
-              <Text style={styles.appText}>UniSwap</Text>
-            </View>
+            {/*<View style={styles.appIcon}>*/}
+              {/*<TouchableOpacity style={[styles.appSquare, { backgroundColor: '#faa8ff' }]} onPress={() => this.props.navigation.navigate('App12')}>*/}
+                {/*<Image source={require('../../../Assets/uniswap.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>*/}
+              {/*</TouchableOpacity>*/}
+              {/*<Text style={styles.appText}>UniSwap</Text>*/}
+            {/*</View>*/}
             <View style={styles.appIcon}>
               <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#0D023B' }]} onPress={() => this.props.navigation.navigate('App9')}>
                 <Image source={require('../../../Assets/gitcoin.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
@@ -116,6 +116,12 @@ export default class AppsScreen extends Component<Props> {
                 <Image source={require('../../../Assets/decentraland.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>Decentraland</Text>
+            </View>
+            <View style={styles.appIcon}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff'}]} onPress={() => this.props.navigation.navigate('App14')}>
+                <Image source={require('../../../Assets/gnosis-logo.png')} style={{ width: 65, height: 65, resizeMode: 'contain' }}/>
+              </TouchableOpacity>
+              <Text style={styles.appText}>Gnosis</Text>
             </View>
             <View style={styles.appIcon}>
               <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#efefef'}]} onPress={() => this.props.navigation.navigate('App11')}>
@@ -149,7 +155,7 @@ export default class AppsScreen extends Component<Props> {
             </View>
             <View style={styles.appIcon}>
               <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#F20000' }]} onPress={() => this.props.navigation.navigate('App16')}>
-                <Image source={require('../../../Assets/qnatas-logo.png')} style={{ width: 45, height: 45, resizeMode: 'contain' }}/>
+                <Image source={require('../../../Assets/qantas-logo.png')} style={{ width: 45, height: 45, resizeMode: 'contain' }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>Qantas</Text>
             </View>
@@ -180,7 +186,7 @@ const styles = StyleSheet.create({
   appSquare: {
     alignItems: 'center',
     backgroundColor: '#43fd9c',
-    borderRadius: 10,
+    borderRadius: 32.5,
     height: 65,
     justifyContent: 'center',
     width: 65,
@@ -201,7 +207,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    backgroundColor: '#ffffff',
+    backgroundColor: 'white',
   },
   headingText: {
     color: 'black',

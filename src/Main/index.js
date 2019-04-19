@@ -12,6 +12,7 @@ export default createBottomTabNavigator(
     Apps: AppsScreen,
     Personal: Personal
   },
+
   {
     headerMode: 'none',
     initialRouteName: 'Apps',
@@ -20,7 +21,9 @@ export default createBottomTabNavigator(
     },
     tabBarOptions: {
       showLabel: false,
-      backgroundColor: 'black',
-      borderTopColor: "white",
+      style: {
+        backgroundColor: '#ffffff',
+        borderTopColor: 'transparent',
+      },
     },
   });

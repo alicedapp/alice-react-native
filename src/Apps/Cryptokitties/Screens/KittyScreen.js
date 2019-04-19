@@ -41,7 +41,7 @@ export default class KittyScreen extends React.Component {
           <View style={styles.kittyContainer}>
             <View style={{ flexDirection: 'column', }}>
               <View style={{ padding: 20, borderRadius: 20, backgroundColor: randomColor[randomNumber] }}>
-                <Image source={{ uri: 'https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1071491.png' }} style={{ resizeMode: 'contain', width: 300, height: 300 }}/>
+                <Image source={{ uri: kitty.image_url_png }} style={{ resizeMode: 'contain', width: 300, height: 300 }}/>
               </View>
               <Text style={{ color: 'black', fontFamily: 'Avenir-Black', fontSize: 25, marginTop: 10, marginRight: 5 }}>{kitty.name}</Text>
               <View style={{ flexDirection: 'row', width: 300, marginTop: 10, alignItems: 'center', justifyContent: 'space-between' }}>

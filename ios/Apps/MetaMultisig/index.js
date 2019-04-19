@@ -136,7 +136,8 @@ export default createBottomTabNavigator({
   {
     tabBarOptions: {
       style: {
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        borderTopColor: 'transparent',
       },
       showLabel: false,
     }

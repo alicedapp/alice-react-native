@@ -11,7 +11,7 @@ class HomeScreen extends React.Component {
         alignItems: 'center',
         backgroundColor: '#F20000',
       }}>
-        <Image source={require('../../../Assets/qnatas-logo.png')} style={{
+        <Image source={require('../../../Assets/qantas-logo.png')} style={{
           width: 80,
           height: 80,
           resizeMode: 'contain',
@@ -38,7 +38,8 @@ export default createBottomTabNavigator({
   {
     tabBarOptions: {
       style: {
-        backgroundColor: '#F20000'
+        backgroundColor: '#F20000',
+        borderTopColor: 'transparent',
       }
       ,
       showLabel: false,

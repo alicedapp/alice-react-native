@@ -22,6 +22,6 @@ export default createStackNavigator({
   },
   {
     navigationOptions: {
-      tabBarIcon: ({tintColor}) => <Icon icon="ChatGrey" size={30}/>,
+      tabBarIcon: ({tintColor}) => <Icon icon="ChatGrey" size={45}/>,
     },
   });

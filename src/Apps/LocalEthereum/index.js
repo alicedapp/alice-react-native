@@ -177,8 +177,10 @@ export default createBottomTabNavigator({
   {
     tabBarOptions: {
       showLabel: false,
-      backgroundColor: 'white',
-      borderColor: 'white',
+      style: {
+        backgroundColor: 'white',
+        borderTopColor: 'transparent',
+      },
       indicatorStyle: {
         backgroundColor: '#eee',
       },
