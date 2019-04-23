@@ -59,11 +59,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     marginTop:130
   },
-  name:{
-    fontSize:22,
-    color:"#FFFFFF",
-    fontWeight:'600',
-  },
   body:{
     marginTop:40,
   },

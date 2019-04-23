@@ -2305,7 +2305,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.alicedapp.alicewallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alicedapp;
 				PRODUCT_NAME = BalanceWallet;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2380,7 +2380,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.alicedapp.alicewallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alicedapp;
 				PRODUCT_NAME = BalanceWallet;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2490,7 +2490,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.alicedapp.alicewallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alicedapp;
 				PRODUCT_NAME = BalanceWallet;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2646,7 +2646,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.alicedapp.alicewallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alicedapp;
 				PRODUCT_NAME = BalanceWallet;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

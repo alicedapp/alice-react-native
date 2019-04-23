@@ -135,12 +135,12 @@ export default class AppsScreen extends Component<Props> {
               </TouchableOpacity>
               <Text style={styles.appText}>localethereum</Text>
             </View>
-            <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#fff4c8' }]} onPress={() => this.props.navigation.navigate('App100')}>
-                <Image source={require('../../../Assets/etheremon.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
-              </TouchableOpacity>
-              <Text style={styles.appText}>Etheremon</Text>
-            </View>
+            {/*<View style={styles.appIcon}>*/}
+              {/*<TouchableOpacity style={[styles.appSquare, { backgroundColor: '#fff4c8' }]} onPress={() => this.props.navigation.navigate('App100')}>*/}
+                {/*<Image source={require('../../../Assets/etheremon.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>*/}
+              {/*</TouchableOpacity>*/}
+              {/*<Text style={styles.appText}>Etheremon</Text>*/}
+            {/*</View>*/}
             <View style={styles.appIcon}>
               <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#37474f' }]} onPress={() => this.props.navigation.navigate('App100')}>
                 <Image source={require('../../../Assets/compound.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
@@ -153,12 +153,12 @@ export default class AppsScreen extends Component<Props> {
               </TouchableOpacity>
               <Text style={styles.appText}>Foam</Text>
             </View>
-            <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#F20000' }]} onPress={() => this.props.navigation.navigate('App16')}>
-                <Image source={require('../../../Assets/qantas-logo.png')} style={{ width: 45, height: 45, resizeMode: 'contain' }}/>
-              </TouchableOpacity>
-              <Text style={styles.appText}>Qantas</Text>
-            </View>
+            {/*<View style={styles.appIcon}>*/}
+              {/*<TouchableOpacity style={[styles.appSquare, { backgroundColor: '#F20000' }]} onPress={() => this.props.navigation.navigate('App16')}>*/}
+                {/*<Image source={require('../../../Assets/qantas-logo.png')} style={{ width: 45, height: 45, resizeMode: 'contain' }}/>*/}
+              {/*</TouchableOpacity>*/}
+              {/*<Text style={styles.appText}>Qantas</Text>*/}
+            {/*</View>*/}
           </View>
         </View>
       </TouchableWithoutFeedback>

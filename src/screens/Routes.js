@@ -101,10 +101,10 @@ const SwipeStack = createMaterialTopTabNavigator({
     name: 'QRScannerScreen',
     screen: QRScannerScreenWithData,
   },
-  AppNavigator: {
-    name: 'AppNavigator',
-    screen: AppNavigator,
-  },
+  // AppNavigator: {
+  //   name: 'AppNavigator',
+  //   screen: AppNavigator,
+  // },
   WalletScreen: {
     name: 'WalletScreen',
     screen: WalletScreen,
@@ -116,7 +116,8 @@ const SwipeStack = createMaterialTopTabNavigator({
 
 }, {
   headerMode: 'none',
-  initialRouteName: 'AppNavigator',
+  // initialRouteName: 'AppNavigator',
+  initialRouteName: 'WalletScreen',
   mode: 'modal',
   tabBarComponent: null,
 });
