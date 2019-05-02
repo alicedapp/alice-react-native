@@ -80,8 +80,8 @@ class SettingsScreen extends React.Component {
 }
 
 export default createBottomTabNavigator({
-  Home: HomeScreen,
-  Trade: SettingsScreen,
+  Land: HomeScreen,
+  Home: SettingsScreen,
 });
 
 const styles = StyleSheet.create({

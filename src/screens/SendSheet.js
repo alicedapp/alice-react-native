@@ -8,8 +8,10 @@ import {
   Image,
   InteractionManager,
   Keyboard,
-  KeyboardAvoidingView, StyleSheet,
-  Text, TouchableOpacity,
+  KeyboardAvoidingView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import { isIphoneX } from 'react-native-iphone-x-helper';
@@ -449,54 +451,10 @@ class SendSheet extends Component {
   }
 
   renderDapplet() {
-    const randomColor = [
-      '#faf4d1',
-      '#cef5d6',
-      '#d4e7fe',
-      '#dfdff9',
-      '#f9e0f3',
-      '#fee0e5',
-      '#f9e1cb',
-      '#eee9e8',
-      '#c6eef9',
-      '#eee1da',
-      '#c6eef9',
-    ];
-    const {
-      dappletData, kitty, randomNumber, randomBreed,
-    } = this.props.navigation.state.params;
-    const breedTime = ['Snappy', 'Swift', 'Prodding', 'Slow'];
     return (
-      <TouchableOpacity onPress={Keyboard.dismiss} style={styles.kittyContainer}>
-        <View style={{ alignItems: 'center' }}>
-          <Text style={{ color: 'black', fontFamily: 'Avenir-Black', fontSize: 14 }}>{kitty.name}</Text>
-          <View style={{
-            width: 150, height: 150, borderRadius: 20, backgroundColor: randomColor[randomNumber],
-          }}>
-            <Image source={{ uri: 'https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1071491.png' }} style={{ resizeMode: 'contain', width: 170, height: 170 }}/>
-          </View>
-          <View style={{width: 150, alignItems: 'flex-start', paddingLeft: 5}}>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Text style={{
-                color: 'black', fontFamily: 'Avenir-Black', fontSize: 15, fontWeight: 'bold',
-              }}>#</Text>
-              <Text style={{ color: 'black', fontFamily: 'Avenir-Black', fontSize: 12 }}>{kitty.id}</Text>
-            </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Image source={require('../../Assets/dna.png')} style={{
-                resizeMode: 'contain', width: 12, height: 12, marginRight: 5,
-              }}/>
-              <Text style={{ color: 'black', fontFamily: 'Avenir-Black', fontSize: 12 }}>Gen {kitty.generation}</Text>
-            </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Image source={require('../../Assets/clock-circular-outline.png')} style={{
-                resizeMode: 'contain', width: 12, height: 12, marginRight: 5,
-              }}/>
-              <Text style={{ color: 'black', fontFamily: 'Avenir-Black', fontSize: 12 }} numberOfLines={1}>{breedTime[randomBreed]}</Text>
-            </View>
-          </View>
-        </View>
-      </TouchableOpacity>
+      <View>
+        {this.props.navigation.state.params.dappletData.component()}
+      </View>
     );
   }
 

@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Image, StyleSheet, Text, TouchableHighlight, ScrollView, Dimensions, View} from "react-native";
+import { Image, StyleSheet, Text, TouchableHighlight, ScrollView, Dimensions, View, TouchableWithoutFeedback } from 'react-native';
 import React from "react";
 import Icon from "../../../components/IconComponent";
 
@@ -20,6 +20,27 @@ export default class ChatScreen extends Component<Props> {
         },
     }
   };
+
+  renderChat1() {
+    return (<View>
+      <View style={{width: width - 50, padding: 8, marginRight: 20, backgroundColor: '#dedede', borderRadius: 5, marginBottom: 5, marginTop: 5}}>
+        <Text>Dude Status is tanking! Get out!</Text>
+      </View>
+      <Image source={require('../../../../Assets/coinmarketcap.png')} style={{flex: 1, resizeMode: 'contain', height: 180, width: width - 50, padding: 8, marginRight: 20, marginBottom: 5, marginTop: 5}}/>
+      <View style={{width: width - 50, padding: 8, marginLeft: 20, marginRight: 5, backgroundColor: '#6024ce', borderRadius: 5, marginBottom: 5, marginTop: 5 }}>
+        <Text style={{color: 'white'}}>Woah! What happened?</Text>
+      </View>
+      <View style={{width: width - 50, padding: 8, marginRight: 20, backgroundColor: '#dedede', borderRadius: 5, marginBottom: 5, marginTop: 5}}>
+        <Text>Apparently there's a new better app</Text>
+      </View>
+      <View style={{width: width - 50, padding: 8, marginRight: 20, backgroundColor: '#dedede', borderRadius: 5, marginBottom: 5, marginTop: 5}}>
+        <Text>Sell quick!</Text>
+      </View>
+      <TouchableWithoutFeedback onPress={this.placeOrder}>
+        <Image source={require('../../../../Assets/radar-chat.png')} style={{flex: 1, resizeMode: 'contain', height: 220, width: width - 50, padding: 8, marginRight: 20, marginBottom: 5, marginTop: 5}}/>
+      </TouchableWithoutFeedback>
+    </View>)
+  }
 
   navigate = (screen) => {
     console.log('navigating');

@@ -15,3 +15,4 @@ export { default as Aragon } from './Aragon';
 export { default as Decentraland } from './Decentraland';
 export { default as Qantas } from './Qantas';
 export { default as Augur } from './Augur';
+export { default as Fork } from './Fork';

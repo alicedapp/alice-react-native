@@ -1,6 +1,55 @@
 import React from 'react';
-import { Dimensions, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, Image, Keyboard, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 let { height, width } = Dimensions.get('window');
+
+const KittyDapplet = (kitty, randomNumber, randomBreed) => {
+  const randomColor = [
+    '#faf4d1',
+    '#cef5d6',
+    '#d4e7fe',
+    '#dfdff9',
+    '#f9e0f3',
+    '#fee0e5',
+    '#f9e1cb',
+    '#eee9e8',
+    '#c6eef9',
+    '#eee1da',
+    '#c6eef9',
+  ];
+  const breedTime = ['Snappy', 'Swift', 'Prodding', 'Slow'];
+  return (
+    <TouchableOpacity onPress={Keyboard.dismiss} style={styles.kittyContainer}>
+      <View style={{ alignItems: 'center' }}>
+        <Text style={{ color: 'black', fontFamily: 'Avenir-Black', fontSize: 14 }}>{kitty.name}</Text>
+        <View style={{
+          width: 150, height: 150, borderRadius: 20, backgroundColor: randomColor[randomNumber],
+        }}>
+          <Image source={{ uri: 'https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1071491.png' }} style={{ resizeMode: 'contain', width: 170, height: 170 }}/>
+        </View>
+        <View style={{width: 150, alignItems: 'flex-start', paddingLeft: 5}}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={{
+              color: 'black', fontFamily: 'Avenir-Black', fontSize: 15, fontWeight: 'bold',
+            }}>#</Text>
+            <Text style={{ color: 'black', fontFamily: 'Avenir-Black', fontSize: 12 }}>{kitty.id}</Text>
+          </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Image source={require('../../../../Assets/dna.png')} style={{
+              resizeMode: 'contain', width: 12, height: 12, marginRight: 5,
+            }}/>
+            <Text style={{ color: 'black', fontFamily: 'Avenir-Black', fontSize: 12 }}>Gen {kitty.generation}</Text>
+          </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Image source={require('../../../../Assets/clock-circular-outline.png')} style={{
+              resizeMode: 'contain', width: 12, height: 12, marginRight: 5,
+            }}/>
+            <Text style={{ color: 'black', fontFamily: 'Avenir-Black', fontSize: 12 }} numberOfLines={1}>{breedTime[randomBreed]}</Text>
+          </View>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+}
 
 export default class KittyScreen extends React.Component {
 
@@ -83,7 +132,7 @@ export default class KittyScreen extends React.Component {
                     <Image source={require('../../../../Assets/share.png')} style={{ resizeMode: 'contain', width: 20, height: 20 }}/>
                   </TouchableOpacity>
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate('SendSheet', { dappletData: {}, kitty, randomNumber, randomBreed, address: kitty.owner.address, asset: 'ETH', assetAmount: '0.044' })}
+                <TouchableOpacity onPress={() => navigation.navigate('SendSheet', { dappletData: {component: () => KittyDapplet(kitty, randomNumber, randomBreed)}, kitty, randomNumber, randomBreed, address: kitty.owner.address, asset: 'ETH', assetAmount: '0.044' })}
                                   style={{padding: 12, height: 50, borderRadius: 5, borderWidth: 2, borderBottomWidth: 4, borderColor: '#e7e6e4', backgroundColor: 'white', alignItems: 'center', justifyContent: 'center'}}>
                   <Text style={{fontFamily: 'Avenir-Black', color: '#575553', fontSize: 15}}>Make Offer</Text>
                 </TouchableOpacity>
@@ -91,7 +140,7 @@ export default class KittyScreen extends React.Component {
             </View>
           </View>
           <View style={{width, marginRight: 30, alignItems: 'flex-end'}}>
-            <TouchableOpacity onPress={() => navigation.navigate('SendSheet', { dappletData: {}, kitty, randomNumber, randomBreed, address: kitty.owner.address, asset: 'ETH', assetAmount: '0.044' })}
+            <TouchableOpacity onPress={() => navigation.navigate('SendSheet', { dappletData: {component: () => KittyDapplet(kitty, randomNumber, randomBreed)}, kitty, randomNumber, randomBreed, address: kitty.owner.address, asset: 'ETH', assetAmount: '0.044' })}
                               style={{width: 100, height: 50, borderRadius: 5, borderWidth: 2, borderBottomWidth: 4, marginTop: 5, borderColor: '#db6a19', backgroundColor: '#ffa039', alignItems: 'center', justifyContent: 'center'}}>
               <Text style={{fontFamily: 'Avenir-Black', color: 'white', fontSize: 15}}>Buy Now</Text>
             </TouchableOpacity>

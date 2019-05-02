@@ -119,7 +119,7 @@ export default class MyKitties extends React.Component {
                       </View>
                     </View>
                   </TouchableOpacity>
-                )
+                );
               }
             })}
           </View>

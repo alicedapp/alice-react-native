@@ -30,7 +30,7 @@ import {
   Decentraland,
   Foam,
   Qantas,
-  Augur
+  Augur, Fork
 } from '../Apps';
 import MainApp from '../Main';
 
@@ -88,6 +88,9 @@ const AppNavigator = createStackNavigator({
   },
   App16: {
     screen: Qantas,
+  },
+  App17: {
+    screen: Fork,
   },
 
 },
