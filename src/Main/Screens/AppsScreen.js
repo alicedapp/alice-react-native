@@ -51,95 +51,95 @@ export default class AppsScreen extends Component<Props> {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
-          {/*<H1>Browse a list of Bounties</H1>*/}
+          <H1>Experiences</H1>
           <View style={styles.appsContainer}>
             <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff' }]} onPress={() => this.props.navigation.navigate('App17')}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff' }]} onPress={() => this.props.navigation.navigate('Fork')}>
                 <Image source={require('../../../Assets/fork-logo.png')} style={{ borderRadius: 32.5, height: 65, justifyContent: 'center', width: 65, resizeMode: 'contain', }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>Fork</Text>
             </View>
             <View style={styles.appIcon}>
-              <TouchableOpacity style={styles.appSquare} onPress={() => this.props.navigation.navigate('App1')}>
+              <TouchableOpacity style={styles.appSquare} onPress={() => this.props.navigation.navigate('RadarRelay')}>
                 <Image source={require('../../../Assets/radar-black.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>Radar</Text>
             </View>
+            {/*<View style={styles.appIcon}>*/}
+              {/*<TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffd6f7' }]} onPress={() => this.props.navigation.navigate('Cryptokitties')}>*/}
+                {/*<Image source={require('../../../Assets/cryptokitties.png')} style={{ width: 60, height: 60, resizeMode: 'contain' }}/>*/}
+              {/*</TouchableOpacity>*/}
+              {/*<Text style={styles.appText}>Cryptokitties</Text>*/}
+            {/*</View>*/}
             <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffd6f7' }]} onPress={() => this.props.navigation.navigate('App2')}>
-                <Image source={require('../../../Assets/cryptokitties.png')} style={{ width: 60, height: 60, resizeMode: 'contain' }}/>
-              </TouchableOpacity>
-              <Text style={styles.appText}>Cryptokitties</Text>
-            </View>
-            <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#08072c' }]} onPress={() => this.props.navigation.navigate('App6')}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#08072c' }]} onPress={() => this.props.navigation.navigate('Dharma')}>
                 <Image source={require('../../../Assets/dharma.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>Dharma</Text>
             </View>
             <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff' }]} onPress={() => this.props.navigation.navigate('App13')}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff' }]} onPress={() => this.props.navigation.navigate('Wyre')}>
                 <Image source={require('../../../Assets/wyre-1.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>Wyre</Text>
             </View>
             <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff' }]} onPress={() => this.props.navigation.navigate('App5')}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff' }]} onPress={() => this.props.navigation.navigate('Peepeth')}>
                 <Image source={require('../../../Assets/peepeth.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>Peepeth</Text>
             </View>
             <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#5A28C6' }]} onPress={() => this.props.navigation.navigate('App4')}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#5A28C6' }]} onPress={() => this.props.navigation.navigate('Bounties')}>
                 <Image source={require('../../../Assets/bounties.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>Bounties</Text>
             </View>
 
             <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#0a0817' }]} onPress={() => this.props.navigation.navigate('App10')}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#0a0817' }]} onPress={() => this.props.navigation.navigate('Synthetix')}>
                 <Image source={require('../../../Assets/synthetix.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>Synthetix</Text>
             </View>
             <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff' }]} onPress={() => this.props.navigation.navigate('App7')}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff' }]} onPress={() => this.props.navigation.navigate('Augur')}>
                 <Image source={require('../../../Assets/augur-logo.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>Augur</Text>
             </View>
+            {/*<View style={styles.appIcon}>*/}
+              {/*<TouchableOpacity style={[styles.appSquare, { backgroundColor: '#faa8ff' }]} onPress={() => this.props.navigation.navigate('Uniswap')}>*/}
+                {/*<Image source={require('../../../Assets/uniswap.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>*/}
+              {/*</TouchableOpacity>*/}
+              {/*<Text style={styles.appText}>UniSwap</Text>*/}
+            {/*</View>*/}
             <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#faa8ff' }]} onPress={() => this.props.navigation.navigate('App12')}>
-                <Image source={require('../../../Assets/uniswap.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
-              </TouchableOpacity>
-              <Text style={styles.appText}>UniSwap</Text>
-            </View>
-            <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#0D023B' }]} onPress={() => this.props.navigation.navigate('App9')}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#0D023B' }]} onPress={() => this.props.navigation.navigate('Gitcoin')}>
                 <Image source={require('../../../Assets/gitcoin.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>GitCoin</Text>
             </View>
             <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff'}]} onPress={() => this.props.navigation.navigate('App14')}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff'}]} onPress={() => this.props.navigation.navigate('Decentraland')}>
                 <Image source={require('../../../Assets/decentraland.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>Decentraland</Text>
             </View>
             <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff'}]} onPress={() => this.props.navigation.navigate('App14')}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff'}]} onPress={() => this.props.navigation.navigate('Decentraland')}>
                 <Image source={require('../../../Assets/gnosis-logo.png')} style={{ width: 65, height: 65, resizeMode: 'contain' }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>Gnosis</Text>
             </View>
             <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#efefef'}]} onPress={() => this.props.navigation.navigate('App11')}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#efefef'}]} onPress={() => this.props.navigation.navigate('Aragon')}>
                 <Image source={require('../../../Assets/aragon.png')} style={{ width: 50, height: 50., resizeMode: 'contain' }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>Aragon</Text>
             </View>
             <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#dbe0ff' }]} onPress={() => this.props.navigation.navigate('App3')}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#dbe0ff' }]} onPress={() => this.props.navigation.navigate('LocalEthereum')}>
                 <Image source={require('../../../Assets/localethereum.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>localethereum</Text>
@@ -157,23 +157,23 @@ export default class AppsScreen extends Component<Props> {
               <Text style={styles.appText}>Compound</Text>
             </View>
             <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff' }]} onPress={() => this.props.navigation.navigate('App15')}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffffff' }]} onPress={() => this.props.navigation.navigate('Foam')}>
                 <Image source={require('../../../Assets/foam.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
               </TouchableOpacity>
               <Text style={styles.appText}>Foam</Text>
             </View>
-            <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#F20000' }]} onPress={() => this.props.navigation.navigate('App16')}>
-                <Image source={require('../../../Assets/qantas-logo.png')} style={{ width: 45, height: 45, resizeMode: 'contain' }}/>
-              </TouchableOpacity>
-              <Text style={styles.appText}>Qantas</Text>
-            </View>
-            <View style={styles.appIcon}>
-              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#FFFFFF' }]} onPress={() => this.props.navigation.navigate('')}>
-                <Image source={require('../../../Assets/daostack.png')} style={{ width: 45, height: 45, resizeMode: 'contain' }}/>
-              </TouchableOpacity>
-              <Text style={styles.appText}>DAOStack</Text>
-            </View>
+            {/*<View style={styles.appIcon}>*/}
+              {/*<TouchableOpacity style={[styles.appSquare, { backgroundColor: '#F20000' }]} onPress={() => this.props.navigation.navigate('Qantas')}>*/}
+                {/*<Image source={require('../../../Assets/qantas-logo.png')} style={{ width: 45, height: 45, resizeMode: 'contain' }}/>*/}
+              {/*</TouchableOpacity>*/}
+              {/*<Text style={styles.appText}>Qantas</Text>*/}
+            {/*</View>*/}
+            {/*<View style={styles.appIcon}>*/}
+              {/*<TouchableOpacity style={[styles.appSquare, { backgroundColor: '#FFFFFF' }]} onPress={() => this.props.navigation.navigate('')}>*/}
+                {/*<Image source={require('../../../Assets/daostack.png')} style={{ width: 45, height: 45, resizeMode: 'contain' }}/>*/}
+              {/*</TouchableOpacity>*/}
+              {/*<Text style={styles.appText}>DAOStack</Text>*/}
+            {/*</View>*/}
           </View>
         </View>
       </TouchableWithoutFeedback>

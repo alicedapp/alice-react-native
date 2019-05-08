@@ -41,55 +41,52 @@ const AppNavigator = createStackNavigator({
   Home: {
     screen: MainApp,
   },
-  App1: {
+  RadarRelay: {
     screen: RadarRelay,
   },
-  App2: {
+  Cryptokitties: {
     screen: Cryptokitties,
   },
-  App3: {
+  LocalEthereum: {
     screen: LocalEthereum,
   },
-  App4: {
+  Bounties: {
     screen: Bounties,
   },
-  App5: {
+  Peepeth: {
     screen: Peepeth,
   },
-  App6: {
+  Dharma: {
     screen: Dharma,
   },
-  App7: {
+  Augur: {
     screen: Augur,
   },
-  App8: {
+  Uniswap: {
     screen: Uniswap,
   },
-  App9: {
+  Gitcoin: {
     screen: Gitcoin,
   },
-  App10: {
+  Synthetix: {
     screen: Synthetix,
   },
-  App11: {
+  Aragon: {
     screen: Aragon,
   },
-  App12: {
-    screen: Uniswap,
-  },
-  App13: {
+  Wyre: {
     screen: Wyre,
   },
-  App14: {
+  Decentraland: {
     screen: Decentraland,
   },
-  App15: {
+  Foam: {
     screen: Foam,
   },
-  App16: {
+  Qantas: {
     screen: Qantas,
   },
-  App17: {
+  Fork: {
     screen: Fork,
   },
 
@@ -119,7 +116,7 @@ const SwipeStack = createMaterialTopTabNavigator({
 
 }, {
   headerMode: 'none',
-  initialRouteName: 'AppNavigator',
+  initialRouteName: 'WalletScreen',
   mode: 'modal',
   tabBarComponent: null,
 });
