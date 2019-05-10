@@ -16,7 +16,7 @@ const Container = styled(Centered)`
   overflow: hidden;
 `;
 
-const QRScannerScreenHeader = styled(Header).attrs({ align: 'end', justify: 'start' })`
+const QRScannerScreenHeader = styled(Header).attrs({ align: 'end', justify: 'end' })`
   position: absolute;
   top: 0;
 `;
@@ -56,7 +56,7 @@ const QRScannerScreen = ({
     <QRScannerScreenHeader>
       <BackButton
         color={colors.white}
-        direction="left"
+        direction="right"
         onPress={onPressBackButton}
       />
     </QRScannerScreenHeader>

@@ -18,6 +18,7 @@ import { isIphoneX } from 'react-native-iphone-x-helper';
 import TouchID from 'react-native-touch-id';
 import { compose, withHandlers } from 'recompact';
 import styled from 'styled-components/primitives';
+import ethers from 'ethers';
 import { AssetList } from '../components/asset-list';
 import { UniqueTokenRow } from '../components/unique-token';
 import { Button, BlockButton, LongPressButton } from '../components/buttons';
@@ -46,6 +47,7 @@ import {
 import { deviceUtils, directionPropType } from '../utils';
 import { showActionSheetWithOptions } from '../utils/actionsheet';
 import { removeLeadingZeros, uppercase } from '../utils/formatters';
+import { loadWallet } from '../model/wallet';
 
 const DoubleArrowIconItem = ({ direction }) => (
   <Icon
@@ -160,7 +162,7 @@ const TransactionContainer = styled(View)`
   ${padding(20, 20)}
   padding-bottom: 50px;
   flex-grow: 2;
-  background-color: ${colors.lightGrey};
+  background-color: ${colors.white};
 `;
 
 class SendSheet extends Component {
@@ -369,6 +371,176 @@ class SendSheet extends Component {
     }
   };
 
+  contractInteraction = async () => {
+    console.log('ethers provider: ', ethers.providers.getDefaultProvider());
+    // Connect to the network
+    const provider = ethers.providers.getDefaultProvider();
+
+    const ContractAddress = '0x89FFF8C75AE3f84B107e1C704c3147a8414Dd417';
+
+    const abi = [
+      {
+        constant: false,
+        inputs: [],
+        name: 'cookingOrder',
+        outputs: [],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function',
+      },
+      {
+        constant: false,
+        inputs: [],
+        name: 'finishOrder',
+        outputs: [],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function',
+      },
+      {
+        constant: false,
+        inputs: [
+          {
+            name: '_foodItem',
+            type: 'string',
+          },
+          {
+            name: '_name',
+            type: 'string',
+          },
+        ],
+        name: 'setOrder',
+        outputs: [],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function',
+      },
+      {
+        constant: false,
+        inputs: [
+          {
+            name: '_orderStatus',
+            type: 'string',
+          },
+        ],
+        name: 'setOrderStatus',
+        outputs: [],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function',
+      },
+      {
+        anonymous: false,
+        inputs: [
+          {
+            indexed: false,
+            name: 'foodItem',
+            type: 'string',
+          },
+          {
+            indexed: false,
+            name: 'name',
+            type: 'string',
+          },
+        ],
+        name: 'FoodFinished',
+        type: 'event',
+      },
+      {
+        anonymous: false,
+        inputs: [
+          {
+            indexed: false,
+            name: 'foodItem',
+            type: 'string',
+          },
+          {
+            indexed: false,
+            name: 'name',
+            type: 'string',
+          },
+        ],
+        name: 'OrderReceived',
+        type: 'event',
+      },
+      {
+        anonymous: false,
+        inputs: [
+          {
+            indexed: false,
+            name: 'orderStatus',
+            type: 'string',
+          },
+        ],
+        name: 'OrderStatus',
+        type: 'event',
+      },
+      {
+        constant: true,
+        inputs: [],
+        name: 'getOrder',
+        outputs: [
+          {
+            name: '',
+            type: 'string',
+          },
+          {
+            name: '',
+            type: 'string',
+          },
+          {
+            name: '',
+            type: 'string',
+          },
+        ],
+        payable: false,
+        stateMutability: 'view',
+        type: 'function',
+      },
+    ];
+
+
+    const contract = new ethers.Contract(ContractAddress, abi, provider);
+    console.log(contract);
+
+    const wallet = await loadWallet();
+
+    const contractWithSigner = contract.connect(wallet);
+
+    const tx = await contractWithSigner.finishOrder();
+
+    console.log(tx.hash);
+
+    await tx.wait();
+  }
+
+  onLongPressSendContractInteraction = () => {
+    const { sendUpdateGasPrice } = this.props;
+    const { sendLongPressProgress } = this.state;
+
+    Animated.timing(sendLongPressProgress, {
+      duration: (sendLongPressProgress._value / 100) * 800,
+      toValue: 0,
+    }).start();
+
+    if (isIphoneX()) {
+      this.contractInteraction();
+    } else {
+      const options = this.getTransactionSpeedOptions();
+
+      showActionSheetWithOptions({
+        cancelButtonIndex: 0,
+        options: options.map(option => option.label),
+      }, (buttonIndex) => {
+        if (buttonIndex > 0) {
+          sendUpdateGasPrice(options[buttonIndex].value);
+
+          this.contractInteraction();
+        }
+      });
+    }
+  };
+
   onPressTransactionSpeed = () => {
     const { sendUpdateGasPrice } = this.props;
 
@@ -512,6 +684,56 @@ class SendSheet extends Component {
     );
   }
 
+  renderContractSendButton() {
+    const { assetAmount, isSufficientBalance, isSufficientGas } = this.props;
+    const { biometryType, sendLongPressProgress } = this.state;
+
+    const isZeroAssetAmount = Number(assetAmount) <= 0;
+    const leftIconName = biometryType === 'FaceID' ? 'faceid' : 'touchid';
+
+    // let disabled = true;
+    // let label = 'Enter an Amount';
+
+    let disabled = false;
+    let label = 'Hold to Purchase';
+
+    if (!isZeroAssetAmount && !isSufficientGas) {
+      disabled = true;
+      label = 'Insufficient Gas';
+    } else if (!isZeroAssetAmount && !isSufficientBalance) {
+      disabled = true;
+      label = 'Insufficient Funds';
+    } else if (!isZeroAssetAmount) {
+      disabled = false;
+      label = 'Hold to Send';
+    }
+
+    return (
+      <Column flex={1} >
+        <TransactionContainer>
+          <SendButton
+            disabled={disabled}
+            leftIconName={disabled ? null : leftIconName}
+            onLongPress={this.onLongPressSendContractInteraction}
+            onPress={this.onPressSend}
+            onRelease={this.onReleaseSend}
+            rightIconName={disabled ? null : 'progress'}
+            rightIconProps={{
+              color: colors.alpha(colors.sendScreen.grey, 0.3),
+              progress: sendLongPressProgress,
+              progressColor: colors.white,
+            }}
+          >
+            {label}
+          </SendButton>
+          {isIphoneX() ? this.renderTransactionSpeed() : null}
+        </TransactionContainer>
+      </Column>
+
+    );
+  }
+
+
   renderTransactionSpeed() {
     const { gasPrice, nativeCurrencySymbol } = this.props;
 
@@ -610,7 +832,7 @@ class SendSheet extends Component {
 
   render() {
     const { isValidAddress, recipient, selected } = this.props;
-    const { dappletData } = this.props.navigation.state.params;
+    const { dappletData, isContract } = this.props.navigation.state.params;
 
     return (
       <KeyboardAvoidingView behavior="padding">
@@ -630,8 +852,9 @@ class SendSheet extends Component {
           <AddressInputBottomBorder />
           {dappletData && this.renderDapplet()}
           {!isValidAddress ? this.renderEmptyState() : null}
-          {isValidAddress && isEmpty(selected) ? this.renderAssetList() : null}
-          {isValidAddress && !isEmpty(selected) ? this.renderTransaction() : null}
+          {isContract && this.renderContractSendButton()}
+          {isValidAddress && !isContract && isEmpty(selected) ? this.renderAssetList() : null}
+          {isValidAddress && !isContract && !isEmpty(selected) ? this.renderTransaction() : null}
         </Container>
       </KeyboardAvoidingView>
     );

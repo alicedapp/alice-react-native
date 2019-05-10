@@ -35,13 +35,13 @@ const ProfileScreen = ({
       </FadeInAnimation>
     )}
     <Header justify="space-between">
+      <BackButton
+        direction="left"
+        onPress={onPressBackButton}
+      />
       <HeaderButton onPress={onPressSettings}>
         <Icon name="gear" />
       </HeaderButton>
-      <BackButton
-        direction="right"
-        onPress={onPressBackButton}
-      />
     </Header>
     <ActivityList
       accountAddress={accountAddress}

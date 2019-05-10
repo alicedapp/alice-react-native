@@ -68,7 +68,7 @@ export default class Menu extends React.Component {
           <View style={{
             flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', flex: 1, width,
           }}>
-            <TouchableOpacity onPress={() => navigation.navigate('SendSheet', { dappletData: {component: () => ForkDapplet()}, address: '0x89FFF8C75AE3f84B107e1C704c3147a8414Dd417', asset: 'ETH', assetAmount: '0.001' })} style={styles.kittyContainer}>
+            <TouchableOpacity onPress={() => navigation.navigate('SendSheet', { dappletData: {component: () => ForkDapplet()}, address: '0x89FFF8C75AE3f84B107e1C704c3147a8414Dd417', isContract: true, asset: 'ETH', assetAmount: '0.001' })} style={styles.kittyContainer}>
               <View style={[{ borderColor: this.state.borderColor }, styles.inputContainer]}>
                 <View>
                   <Image source={require('../../../../Assets/emoji-hamburger.png')} style={styles.restaurantImage}/>
