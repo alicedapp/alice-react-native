@@ -2,6 +2,12 @@ import React from 'react';
 import { Dimensions, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from '../../../components/IconComponent';
 let { height, width } = Dimensions.get('window');
+// import {
+//   assetDataUtils,
+//   generatePseudoRandomSalt,
+//   orderHashUtils,
+//   signatureUtils,
+// } from '0x.js';
 export default class Deals extends React.Component {
   static navigationOptions = ({ navigation }) => {
     const { navigate } = navigation;

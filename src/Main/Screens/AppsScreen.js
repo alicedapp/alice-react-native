@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import Icon from '../../components/IconComponent';
 const RNFS = require('react-native-fs');
-import H1 from '../../components/text/H1'
+import H1 from '../../components/text/H1';
 
 const { height, width } = Dimensions.get('window');
 
@@ -20,10 +20,10 @@ export default class AppsScreen extends Component<Props> {
   componentDidMount() {
     RNFS.readDir(RNFS.MainBundlePath) // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
       .then((result) => {
-        console.log('GOT RESULT', result);
+        // console.log('GOT RESULT', result);
         result.map((res, i) => {
-          console.log('NAME: ', res.name)
-          console.log('NUMBER: ', i)
+          // console.log('NAME: ', res.name)
+          // console.log('NUMBER: ', i)
         })
         // stat the first file
         return Promise.all([RNFS.stat(result[0].path), result[0].path]);
@@ -65,12 +65,12 @@ export default class AppsScreen extends Component<Props> {
               </TouchableOpacity>
               <Text style={styles.appText}>Radar</Text>
             </View>
-            {/*<View style={styles.appIcon}>*/}
-              {/*<TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffd6f7' }]} onPress={() => this.props.navigation.navigate('Cryptokitties')}>*/}
-                {/*<Image source={require('../../../Assets/cryptokitties.png')} style={{ width: 60, height: 60, resizeMode: 'contain' }}/>*/}
-              {/*</TouchableOpacity>*/}
-              {/*<Text style={styles.appText}>Cryptokitties</Text>*/}
-            {/*</View>*/}
+            <View style={styles.appIcon}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#ffd6f7' }]} onPress={() => this.props.navigation.navigate('Cryptokitties')}>
+                <Image source={require('../../../Assets/cryptokitties.png')} style={{ width: 60, height: 60, resizeMode: 'contain' }}/>
+              </TouchableOpacity>
+              <Text style={styles.appText}>Cryptokitties</Text>
+            </View>
             <View style={styles.appIcon}>
               <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#08072c' }]} onPress={() => this.props.navigation.navigate('Dharma')}>
                 <Image source={require('../../../Assets/dharma.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
@@ -108,12 +108,12 @@ export default class AppsScreen extends Component<Props> {
               </TouchableOpacity>
               <Text style={styles.appText}>Augur</Text>
             </View>
-            {/*<View style={styles.appIcon}>*/}
-              {/*<TouchableOpacity style={[styles.appSquare, { backgroundColor: '#faa8ff' }]} onPress={() => this.props.navigation.navigate('Uniswap')}>*/}
-                {/*<Image source={require('../../../Assets/uniswap.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>*/}
-              {/*</TouchableOpacity>*/}
-              {/*<Text style={styles.appText}>UniSwap</Text>*/}
-            {/*</View>*/}
+            <View style={styles.appIcon}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#faa8ff' }]} onPress={() => this.props.navigation.navigate('Uniswap')}>
+                <Image source={require('../../../Assets/uniswap.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
+              </TouchableOpacity>
+              <Text style={styles.appText}>UniSwap</Text>
+            </View>
             <View style={styles.appIcon}>
               <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#0D023B' }]} onPress={() => this.props.navigation.navigate('Gitcoin')}>
                 <Image source={require('../../../Assets/gitcoin.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>

@@ -107,7 +107,8 @@ const SwipeStack = createMaterialTopTabNavigator({
   },
   WalletScreen: {
     name: 'WalletScreen',
-    screen: WalletScreen,
+    screen: RadarRelay,
+    // screen: WalletScreen,
   },
   ProfileScreen: {
     name: 'ProfileScreen',

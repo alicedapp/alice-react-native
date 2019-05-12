@@ -5,7 +5,7 @@ export default class CameraComponent extends Component {
 
   render() {
     return (
-      <Camera style={{flex: 1}} onBarCodeRead={() => this.props.navigation.navigate('Menu')}>
+      <Camera style={{flex: 1}} onBarCodeRead={() => this.props.navigation.navigate('BuyAndSell')}>
 
       </Camera>
     )

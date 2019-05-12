@@ -31,6 +31,16 @@ const TokenExpandedState = ({
         label="Send to..."
         onPress={onPressSend}
       />
+      { title === "Ethereum" && <AssetPanelAction
+        icon="send"
+        label="Wrap"
+        onPress={onPressSend}
+      /> }
+      { title === "Wrapped Ether" && <AssetPanelAction
+        icon="send"
+        label="Unwrap"
+        onPress={onPressSend}
+      /> }
     </AssetPanel>
   </FloatingPanels>
 );

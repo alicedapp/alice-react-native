@@ -24,7 +24,7 @@ const KittyDapplet = (kitty, randomNumber, randomBreed) => {
         <View style={{
           width: 150, height: 150, borderRadius: 20, backgroundColor: randomColor[randomNumber],
         }}>
-          <Image source={{ uri: 'https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/1071491.png' }} style={{ resizeMode: 'contain', width: 170, height: 170 }}/>
+          <Image source={{ uri: kitty.image_url_png }} style={{ resizeMode: 'contain', width: 170, height: 170 }}/>
         </View>
         <View style={{width: 150, alignItems: 'flex-start', paddingLeft: 5}}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>

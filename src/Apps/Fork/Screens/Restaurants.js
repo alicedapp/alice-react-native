@@ -54,7 +54,7 @@ export default class Restaurants extends React.Component {
             {this.state.restaurants.map((restaurant, count) => {
               if (count < 6) {
                 return (
-                  <TouchableOpacity onPress={() => navigation.navigate('Menu', {})} style={styles.kittyContainer}>
+                  <TouchableOpacity onPress={() => navigation.navigate('BuyAndSell', {})} style={styles.kittyContainer}>
                     <View style={[{ borderColor: this.state.borderColor }, styles.inputContainer]}>
                       {this.renderSwitch(restaurant)}
                       <Text style={{
