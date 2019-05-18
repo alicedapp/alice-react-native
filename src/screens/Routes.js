@@ -29,8 +29,9 @@ import {
   Wyre,
   Decentraland,
   Foam,
-  Qantas,
-  Augur, Fork
+  Veil,
+  Augur,
+  Fork
 } from '../Apps';
 import MainApp from '../Main';
 
@@ -83,8 +84,8 @@ const AppNavigator = createStackNavigator({
   Foam: {
     screen: Foam,
   },
-  Qantas: {
-    screen: Qantas,
+  Veil: {
+    screen: Veil,
   },
   Fork: {
     screen: Fork,
@@ -107,8 +108,8 @@ const SwipeStack = createMaterialTopTabNavigator({
   },
   WalletScreen: {
     name: 'WalletScreen',
-    screen: RadarRelay,
-    // screen: WalletScreen,
+    // screen: Veil,
+    screen: WalletScreen,
   },
   ProfileScreen: {
     name: 'ProfileScreen',

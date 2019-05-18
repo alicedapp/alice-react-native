@@ -15,6 +15,7 @@ import Deals from './Screens/Deals';
 import Menu from './Screens/Menu';
 import TakeAway from './Screens/TakeAway';
 import Restaurants from './Screens/Restaurants';
+import Confirmation from './Screens/Confirmation';
 import CameraComponent from '../../screens/Camera';
 
 let { height, width } = Dimensions.get('window');
@@ -28,6 +29,9 @@ const HomeScreen2 = createStackNavigator({
   },
   Camera: {
     screen: CameraComponent
+  },
+  Confirmation: {
+    screen: Confirmation
   }
 },
 {

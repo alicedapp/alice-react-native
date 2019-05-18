@@ -43,6 +43,23 @@ export default class Restaurants extends React.Component {
         <View style={{ margin: 20, marginBottom: 0, backgroundColor: 'transparent' }}>
           <Text style={{
             color: 'black', fontFamily: 'Avenir-Black', fontSize: 25, marginTop: 10,
+          }}>Events</Text>
+        </View>
+        <View style={{
+          flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', width,
+        }}>
+          <TouchableOpacity onPress={() => navigation.navigate('Menu', {})} style={styles.kittyContainer}>
+            <View style={[{ borderColor: this.state.borderColor }, styles.inputContainer]}>
+              <Image source={require('../Assets/eth-new-york.png')} style={styles.restaurantImage}/>
+              <Text style={{
+                color: 'black', fontFamily: 'Avenir-Black', fontSize: 25, marginTop: 10,
+              }}>ETH New York</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View style={{ margin: 20, marginBottom: 0, backgroundColor: 'transparent' }}>
+          <Text style={{
+            color: 'black', fontFamily: 'Avenir-Black', fontSize: 25, marginTop: 10,
           }}>Restaurants</Text>
         </View>
         <ScrollView style={{
@@ -54,7 +71,7 @@ export default class Restaurants extends React.Component {
             {this.state.restaurants.map((restaurant, count) => {
               if (count < 6) {
                 return (
-                  <TouchableOpacity onPress={() => navigation.navigate('BuyAndSell', {})} style={styles.kittyContainer}>
+                  <TouchableOpacity key={count} onPress={() => navigation.navigate('Menu', {})} style={styles.kittyContainer}>
                     <View style={[{ borderColor: this.state.borderColor }, styles.inputContainer]}>
                       {this.renderSwitch(restaurant)}
                       <Text style={{

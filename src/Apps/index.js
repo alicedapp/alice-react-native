@@ -16,3 +16,4 @@ export { default as Decentraland } from './Decentraland';
 export { default as Qantas } from './Qantas';
 export { default as Augur } from './Augur';
 export { default as Fork } from './Fork';
+export { default as Veil } from './Veil';

@@ -82,11 +82,11 @@ class HomeScreen extends React.Component {
           flex: 1,
         }}>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', flex: 1, width }}>
-            {this.state.kitties.map(kitty => {
+            {this.state.kitties.map((kitty, i) => {
               const randomBreed = Math.floor(Math.random()*4);
               let randomNumber = Math.floor(Math.random() * 11);
               return(
-                <TouchableOpacity onPress={() => navigation.navigate('KittyScreen', { kitty, randomNumber, randomBreed, backgroundColor: randomColor[randomNumber], breedTime: breedTime[randomBreed] })} style={styles.kittyContainer}>
+                <TouchableOpacity key={i} onPress={() => navigation.navigate('KittyScreen', { kitty, randomNumber, randomBreed, backgroundColor: randomColor[randomNumber], breedTime: breedTime[randomBreed] })} style={styles.kittyContainer}>
                   <View style={{ alignItems: 'center' }}>
                     <View style={{
                       width: 150, height: 150, borderRadius: 20, backgroundColor: randomColor[randomNumber],

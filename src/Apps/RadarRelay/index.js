@@ -25,9 +25,6 @@ const HomeScreen2 = createStackNavigator({
     Home: {
       screen: OrderBook,
     },
-    BuyAndSell: {
-      screen: BuyAndSell,
-    },
     Camera: {
       screen: CameraComponent
     }
@@ -35,13 +32,13 @@ const HomeScreen2 = createStackNavigator({
   {
     headerMode: 'none',
     navigationOptions: {
-      tabBarIcon: ({ tintColor }) => <Icon icon={require('../../../Assets/plate.png')} size={25}/>,
+      tabBarIcon: ({ tintColor }) => <Icon icon={require('./Assets/list-white.png')} size={25}/>,
     },
   });
 
 export default createBottomTabNavigator({
     Home: HomeScreen2,
-    TakeAway: TakeAway,
+    BuyAndSell: BuyAndSell,
     Deals: Deals,
   },
   {

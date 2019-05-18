@@ -162,6 +162,24 @@ export default class AppsScreen extends Component<Props> {
               </TouchableOpacity>
               <Text style={styles.appText}>Foam</Text>
             </View>
+            <View style={styles.appIcon}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#1b1c22' }]} onPress={() => this.props.navigation.navigate('')}>
+                <Image source={require('../../../Assets/dydx.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
+              </TouchableOpacity>
+              <Text style={styles.appText}>dy/dx</Text>
+            </View>
+            <View style={styles.appIcon}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#0024ed' }]} onPress={() => this.props.navigation.navigate('Veil')}>
+                <Image source={require('../../../Assets/veil.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
+              </TouchableOpacity>
+              <Text style={styles.appText}>Veil</Text>
+            </View>
+            <View style={styles.appIcon}>
+              <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#181e2a' }]} onPress={() => this.props.navigation.navigate('')}>
+                <Image source={require('../../../Assets/hummingbot.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
+              </TouchableOpacity>
+              <Text style={styles.appText}>Hummingbot</Text>
+            </View>
             {/*<View style={styles.appIcon}>*/}
               {/*<TouchableOpacity style={[styles.appSquare, { backgroundColor: '#F20000' }]} onPress={() => this.props.navigation.navigate('Qantas')}>*/}
                 {/*<Image source={require('../../../Assets/qantas-logo.png')} style={{ width: 45, height: 45, resizeMode: 'contain' }}/>*/}

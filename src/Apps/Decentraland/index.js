@@ -52,7 +52,7 @@ class HomeScreen extends React.Component {
       <ScrollView style={{ width, flex: 1 }}>
         {this.state.land.data.parcels.map((result, i) => {
           return(
-            <View style={styles.bountyContainer}>
+            <View key={i} style={styles.bountyContainer}>
               <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                 <Image source={{uri: `https://api.decentraland.org/v1/estates/${i+1}/map.png?height=500&width=500&size=10&publications=true`}} style={{
                   width: 200,

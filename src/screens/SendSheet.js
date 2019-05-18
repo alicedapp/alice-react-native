@@ -832,7 +832,8 @@ class SendSheet extends Component {
 
   render() {
     const { isValidAddress, recipient, selected } = this.props;
-    const { dappletData, isContract } = this.props.navigation.state.params;
+    console.log('PROPS: ', this.props);
+    const { dappletData, isContract } = this.props.navigation.state.params || false;
 
     return (
       <KeyboardAvoidingView behavior="padding">

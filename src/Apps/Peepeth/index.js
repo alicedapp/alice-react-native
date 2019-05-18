@@ -36,9 +36,9 @@ class HomeScreen extends React.Component {
         <ScrollView style={{
           flex: 1,
         }}>
-          {this.state.peeps.map(peep => {
+          {this.state.peeps.map((peep, i) => {
             return (
-              <View style={styles.peepContainer}>
+              <View key={i} style={styles.peepContainer}>
                 <Text>{peep.content}</Text>
               </View>
             )

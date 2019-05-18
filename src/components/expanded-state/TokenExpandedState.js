@@ -1,7 +1,7 @@
 import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { InteractionManager } from 'react-native';
+import { Image, InteractionManager, Text, TouchableOpacity, View } from 'react-native';
 import Piwik from 'react-native-matomo';
 import {
   compose,
@@ -41,6 +41,30 @@ const TokenExpandedState = ({
         label="Unwrap"
         onPress={onPressSend}
       /> }
+      { title === "0x Protocol Token" && <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={styles.appIcon}>
+          <TouchableOpacity style={styles.appSquare} onPress={() => this.props.navigation.navigate('RadarRelay')}>
+            <Image source={require('../../../Assets/radar-black.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.appIcon}>
+          <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#1b1c22' }]} onPress={() => this.props.navigation.navigate('')}>
+            <Image source={require('../../../Assets/dydx.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.appIcon}>
+          <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#0024ed' }]} onPress={() => this.props.navigation.navigate('')}>
+            <Image source={require('../../../Assets/veil.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.appIcon}>
+          <TouchableOpacity style={[styles.appSquare, { backgroundColor: '#181e2a' }]} onPress={() => this.props.navigation.navigate('')}>
+            <Image source={require('../../../Assets/hummingbot.png')} style={{ width: 40, height: 40, resizeMode: 'contain' }}/>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      }
     </AssetPanel>
   </FloatingPanels>
 );
@@ -74,3 +98,25 @@ export default compose(
   }),
   onlyUpdateForKeys(['price']),
 )(TokenExpandedState);
+
+const styles = {
+  appIcon: {
+    alignItems: 'center',
+    height: 84,
+    margin: 10,
+    maxWidth: 84,
+    justifyContent: 'space-between',
+  },
+  appSquare: {
+    alignItems: 'center',
+    backgroundColor: '#43fd9c',
+    borderRadius: 32.5,
+    height: 65,
+    justifyContent: 'center',
+    width: 65,
+    shadowColor: '#7d7d7d',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+  },
+}

@@ -73,9 +73,9 @@ class Explore extends React.Component {
               </TouchableOpacity>
             </View>
             <ScrollView style={{ width, flex: 1 }}>
-              {this.state.bountiesInfo.results.map((result) => {
+              {this.state.bountiesInfo.results.map((result, i) => {
                 return(
-                  <View style={styles.bountyContainer}>
+                  <View key={i} style={styles.bountyContainer}>
                     <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                       <Text style={{flex: 4}}>{result.title}</Text>
                       <View style={{flex: 1, alignItems: 'flex-end', justifyContent: 'center'}}>
@@ -85,9 +85,9 @@ class Explore extends React.Component {
                     </View>
                     <View style={{flexDirection: 'row'}}>
                       <View style={{flexDirection: 'row', alignItems: 'center', flex: 4, flexWrap: 'wrap'}}>
-                        {result.categories.map(category => {
+                        {result.categories.map((category, i) => {
                           return (
-                            <View style={{ borderColor: '#aaaaaa', borderWidth: 1, borderRadius: 25, alignItems: 'center', justifyContent: 'center', margin: 2, padding: 4 }}>
+                            <View key={i} style={{ borderColor: '#aaaaaa', borderWidth: 1, borderRadius: 25, alignItems: 'center', justifyContent: 'center', margin: 2, padding: 4 }}>
                               <Text>{ category.name }</Text>
                             </View>
                           );

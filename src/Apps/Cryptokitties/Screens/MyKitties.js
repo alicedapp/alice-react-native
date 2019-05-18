@@ -90,7 +90,7 @@ export default class MyKitties extends React.Component {
               let randomNumber = Math.floor(Math.random() * 11);
               if (count < 5) {
                 return(
-                  <TouchableOpacity onPress={() => navigation.navigate('KittyScreen', { kitty, randomNumber, randomBreed, backgroundColor: randomColor[randomNumber], breedTime: breedTime[randomBreed] })} style={styles.kittyContainer}>
+                  <TouchableOpacity key={count} onPress={() => navigation.navigate('KittyScreen', { kitty, randomNumber, randomBreed, backgroundColor: randomColor[randomNumber], breedTime: breedTime[randomBreed] })} style={styles.kittyContainer}>
                     <View style={{ alignItems: 'center' }}>
                       <View style={{
                         width: 150, height: 150, borderRadius: 20, backgroundColor: randomColor[randomNumber],
