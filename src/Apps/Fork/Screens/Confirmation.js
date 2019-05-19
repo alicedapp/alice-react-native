@@ -10,21 +10,6 @@ export default class Restaurants extends React.Component {
     restaurants: ['japanese', 'american', 'mexican', 'italian', 'french'],
   }
 
-  renderSwitch(restaurant) {
-    switch (restaurant) {
-      case 'japanese':
-        return <Image source={require('../../../../Assets/sushi.png')} style={styles.restaurantImage}/>
-      case 'american':
-        return <Image source={require('../../../../Assets/fries.png')} style={styles.restaurantImage}/>
-      case 'mexican':
-        return <Image source={require('../../../../Assets/taco.png')} style={styles.restaurantImage}/>
-      case 'italian':
-        return <Image source={require('../../../../Assets/pizza.png')} style={styles.restaurantImage}/>
-      case 'french':
-        return <Image source={require('../../../../Assets/croissant.png')} style={styles.restaurantImage}/>
-    }
-  }
-
   render() {
     const { navigation } = this.props;
 
@@ -37,7 +22,7 @@ export default class Restaurants extends React.Component {
             <Image source={require('../../../../Assets/back-button.png')} style={{ resizeMode: 'contain', width: 20, height: 20 }}/>
           </TouchableOpacity>
           <TouchableOpacity style={{width: 35, height: 35}} onPress={() => navigation.navigate('Camera')}>
-            <Image source={require('../../../../Assets/camera-emoji.png')} style={{ resizeMode: 'contain', width: 30, height: 30 }}/>
+
           </TouchableOpacity>
         </View>
         <View style={{ margin: 20, marginBottom: 0, backgroundColor: 'transparent' }}>
@@ -50,12 +35,10 @@ export default class Restaurants extends React.Component {
         }}>
           <TouchableOpacity onPress={() => navigation.navigate('Menu', {})} style={styles.kittyContainer}>
             <View>
-              <View style={[{ borderColor: this.state.borderColor }, styles.inputContainer]}>
                 <Image source={require('../Assets/eth-new-york.png')} style={styles.restaurantImage}/>
                 <Text style={{
                   color: 'black', fontFamily: 'Avenir-Black', fontSize: 25, marginTop: 10,
                 }}>You've been rewarded a CryptoKitty</Text>
-              </View>
               <View style={{}}>
                 <Image source={require('../Assets/cryptokitty.png')} style={{ resizeMode: 'contain', width: 70, height: 70 }}/>
               </View>

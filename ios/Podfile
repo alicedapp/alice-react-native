@@ -50,4 +50,6 @@ target 'BalanceWallet' do
   
   pod 'RNFS', :path => '../node_modules/react-native-fs'
 
+  pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
+
 end

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import {
   Animated,
-  Clipboard,
+  Clipboard, Dimensions,
   Image,
   InteractionManager,
   Keyboard,
@@ -19,6 +19,27 @@ import TouchID from 'react-native-touch-id';
 import { compose, withHandlers } from 'recompact';
 import styled from 'styled-components/primitives';
 import ethers from 'ethers';
+const firebase = require("firebase");
+// Required for side-effects
+require("firebase/firestore");
+
+let { width, height } = Dimensions.get('window')
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCo_RR5oANpfvognyz-4AAwS5z-8BiaL4E",
+  authDomain: "fork-1506600187773.firebaseapp.com",
+  databaseURL: "https://fork-1506600187773.firebaseio.com",
+  projectId: "fork-1506600187773",
+  storageBucket: "fork-1506600187773.appspot.com",
+  messagingSenderId: "1065429347396",
+  appId: "1:1065429347396:web:f8860b64869a01ae"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+let db = firebase.firestore();
+
 import { AssetList } from '../components/asset-list';
 import { UniqueTokenRow } from '../components/unique-token';
 import { Button, BlockButton, LongPressButton } from '../components/buttons';
@@ -371,7 +392,26 @@ class SendSheet extends Component {
     }
   };
 
+  sendOrder = () => {
+    Keyboard.dismiss();
+    const orderNo = `order${Math.floor((Math.random() * 99999999999) + 1)}`;
+    db.collection('food-orders').doc(orderNo.toString()).set({
+      name: 'Mark',
+      food: 'Hamburger',
+    })
+      .then(() => {
+        console.log('Document successfully written!');
+      })
+      .catch((error) => {
+        console.error('Error writing document: ', error);
+      });
+  };
+
   contractInteraction = async () => {
+    const {
+      navigation,
+    } = this.props;
+
     console.log('ethers provider: ', ethers.providers.getDefaultProvider());
     // Connect to the network
     const provider = ethers.providers.getDefaultProvider();
@@ -510,8 +550,12 @@ class SendSheet extends Component {
     const tx = await contractWithSigner.finishOrder();
 
     console.log(tx.hash);
+    if (tx.hash) {
+      navigation.navigate('ProfileScreen');
+      this.sendOrder();
+    }
 
-    await tx.wait();
+    const txConfirm = await tx.wait();
   }
 
   onLongPressSendContractInteraction = () => {

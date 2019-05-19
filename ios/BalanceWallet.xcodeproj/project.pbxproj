@@ -87,6 +87,7 @@
 		B485B73D33C740BE8167AE4E /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D518658CFF8B491991A06426 /* SF-Pro-Text-MediumItalic.otf */; };
 		B562299555FD4D75968F6BF1 /* Graphik-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB48DC1D46D449759B9C61D4 /* Graphik-Thin.otf */; };
 		B7A3E82A4C4449F4A18EB5C2 /* SFMono-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95F2888C850F40C8A26E083B /* SFMono-Regular.otf */; };
+		BDCD70D5229007F6003EBBCD /* libRCTOneSignal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDCD70A5229007E7003EBBCD /* libRCTOneSignal.a */; };
 		C37D7F7EA236460085DB5BFA /* SF-Pro-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1736F851327A41C3815212E7 /* SF-Pro-Text-BoldItalic.otf */; };
 		C5D098E8B85D40048FE4946A /* Graphik-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A9AF25703474604964D6EC1 /* Graphik-Light.otf */; };
 		C66451ECC2944B439E123CF2 /* SF-Pro-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = BE239BA93F6B4EDC867B1A41 /* SF-Pro-Display-Black.otf */; };
@@ -568,6 +569,13 @@
 			remoteGlobalIDString = 358F4ED71D1E81A9004DF814;
 			remoteInfo = RCTBlob;
 		};
+		BDCD70A4229007E7003EBBCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BDCD708E229007E7003EBBCD /* RCTOneSignal.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3245CDED1BFEE35C00EABF68;
+			remoteInfo = RCTOneSignal;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -690,6 +698,7 @@
 		B98C0A69B3614C65B194BC68 /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
 		BA31E8CEDBCC417CA50BC57B /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Display-Bold.otf"; path = "../src/assets/fonts/SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		BC297F456F414298BFBB0C30 /* RNMail.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNMail.xcodeproj; path = "../node_modules/react-native-mail/RNMail.xcodeproj"; sourceTree = "<group>"; };
+		BDCD708E229007E7003EBBCD /* RCTOneSignal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTOneSignal.xcodeproj; path = "../node_modules/react-native-onesignal/ios/RCTOneSignal.xcodeproj"; sourceTree = "<group>"; };
 		BE239BA93F6B4EDC867B1A41 /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Display-Black.otf"; path = "../src/assets/fonts/SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
 		BEE6BF249EAB410AB20BBB98 /* RNOS.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNOS.xcodeproj; path = "../node_modules/react-native-os/ios/RNOS.xcodeproj"; sourceTree = "<group>"; };
 		C1324455238847F2AD5C08B4 /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
@@ -734,6 +743,7 @@
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
+				BDCD70D5229007F6003EBBCD /* libRCTOneSignal.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
@@ -1143,6 +1153,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				BDCD708E229007E7003EBBCD /* RCTOneSignal.xcodeproj */,
 				3CE9169F21A8BED500BF6B5E /* BNFPiwik.xcodeproj */,
 				3C39C266218BBE66004C763F /* FastImage.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
@@ -1219,6 +1230,14 @@
 			children = (
 				ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */,
 				2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BDCD708F229007E7003EBBCD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BDCD70A5229007E7003EBBCD /* libRCTOneSignal.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1407,6 +1426,10 @@
 				{
 					ProductGroup = 00C302D41ABCB9D200DB3ED1 /* Products */;
 					ProjectRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
+				},
+				{
+					ProductGroup = BDCD708F229007E7003EBBCD /* Products */;
+					ProjectRef = BDCD708E229007E7003EBBCD /* RCTOneSignal.xcodeproj */;
 				},
 				{
 					ProductGroup = 139105B71AF99BAD00B5F7CC /* Products */;
@@ -1955,6 +1978,13 @@
 			fileType = archive.ar;
 			path = libRCTBlob.a;
 			remoteRef = ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BDCD70A5229007E7003EBBCD /* libRCTOneSignal.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTOneSignal.a;
+			remoteRef = BDCD70A4229007E7003EBBCD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

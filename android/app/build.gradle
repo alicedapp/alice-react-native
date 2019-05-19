@@ -152,6 +152,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-onesignal')
     compile project(':react-native-fs')
     compile project(':react-native-maps')
     compile project(':react-native-device-info')

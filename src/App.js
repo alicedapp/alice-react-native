@@ -13,6 +13,7 @@ import { StackActions } from 'react-navigation';
 import CodePush from 'react-native-code-push';
 import firebase from 'react-native-firebase';
 import { useScreens } from 'react-native-screens';
+import OneSignal from 'react-native-onesignal';
 import { connect, Provider } from 'react-redux';
 import { compose, withProps } from 'recompact';
 import { FlexItem } from './components/layout';
@@ -47,6 +48,15 @@ if (process.env.NODE_ENV === 'development') {
 useScreens();
 
 class App extends Component {
+  constructor(properties) {
+    super(properties);
+    OneSignal.init("30676d11-1498-4613-8972-962af6c68fd5");
+
+    OneSignal.addEventListener('received', this.onReceived);
+    OneSignal.addEventListener('opened', this.onOpened);
+    OneSignal.addEventListener('ids', this.onIds);
+  }
+
   static propTypes = {
     accountLoadState: PropTypes.func,
     addTransactionsToApprove: PropTypes.func,
@@ -67,49 +77,28 @@ class App extends Component {
 
   navigatorRef = null
 
+  onReceived(notification) {
+    console.log("Notification received: ", notification);
+  }
+
+  onOpened(openResult) {
+    console.log('Message: ', openResult.notification.payload.body);
+    console.log('Data: ', openResult.notification.payload.additionalData);
+    console.log('isActive: ', openResult.notification.isAppInFocus);
+    console.log('openResult: ', openResult);
+  }
+
+  onIds(device) {
+    console.log('Device info: ', device);
+  }
+
   async componentDidMount() {
     await this.handleWalletConfig();
     this.props.onHideSplashScreen();
     await this.props.refreshAccount();
     Piwik.initTracker('https://matomo.balance.io/piwik.php', 2);
     AppState.addEventListener('change', this.handleAppStateChange);
-    firebase.messaging().getToken()
-      .then(fcmToken => {
-        if (fcmToken) {
-          commonStorage.saveLocal('balanceWalletFcmToken', { data: fcmToken });
-        }
-      })
-      .catch(error => {
-        console.log('error getting fcm token', error);
-      });
 
-    this.onTokenRefreshListener = firebase.messaging().onTokenRefresh(fcmToken => {
-      commonStorage.saveLocal('balanceWalletFcmToken', { data: fcmToken });
-    });
-
-    this.notificationListener = firebase.notifications().onNotification(notification => {
-      const navState = get(this.navigatorRef, 'state.nav');
-      const route = Navigation.getActiveRouteName(navState);
-      const { callId, sessionId } = notification.data;
-      if (route === 'ConfirmRequest') {
-        this.fetchAndAddWalletConnectRequest(callId, sessionId)
-          .then(transaction => {
-            const localNotification = new firebase.notifications.Notification()
-              .setTitle(notification.title)
-              .setBody(notification.body)
-              .setData(notification.data);
-
-            firebase.notifications().displayNotification(localNotification);
-          });
-      } else {
-        this.onPushNotificationOpened(callId, sessionId, true);
-      }
-    });
-
-    this.notificationOpenedListener = firebase.notifications().onNotificationOpened(notificationOpen => {
-      const { callId, sessionId } = notificationOpen.notification.data;
-      this.onPushNotificationOpened(callId, sessionId, false);
-    });
   }
 
   handleWalletConfig = async (seedPhrase) => {
@@ -152,9 +141,10 @@ class App extends Component {
 
   componentWillUnmount() {
     AppState.removeEventListener('change', this.handleAppStateChange);
-    this.notificationListener();
-    this.notificationOpenedListener();
-    this.onTokenRefreshListener();
+    OneSignal.removeEventListener('received', this.onReceived);
+    OneSignal.removeEventListener('opened', this.onOpened);
+    OneSignal.removeEventListener('ids', this.onIds);
+
   }
 
   handleNavigatorRef = (navigatorRef) => { this.navigatorRef = navigatorRef; }
