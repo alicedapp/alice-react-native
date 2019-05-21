@@ -397,7 +397,7 @@ class SendSheet extends Component {
     const orderNo = `order${Math.floor((Math.random() * 99999999999) + 1)}`;
     db.collection('food-orders').doc(orderNo.toString()).set({
       name: 'Mark',
-      food: 'Hamburger',
+      food: this.props.navigation.state.params.foodItem,
     })
       .then(() => {
         console.log('Document successfully written!');

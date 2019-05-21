@@ -5,23 +5,46 @@ import {
 
 const { width, height } = Dimensions.get('window');
 
-
-
-const ForkDapplet = () => {
+const ForkDapplet = (food, price) => {
   const sendOrder = () => {
     Keyboard.dismiss();
-    const orderNo = `order${Math.floor((Math.random() * 99999999999) + 1)}`;
-    db.collection('food-orders').doc(orderNo.toString()).set({
-      name: 'Mark',
-      food: 'Hamburger',
-    })
-      .then(() => {
-        console.log('Document successfully written!');
-      })
-      .catch((error) => {
-        console.error('Error writing document: ', error);
-      });
   };
+
+  const order = () => {
+    if (food === "Hamburger") {
+      return (
+        <View style={[{ borderColor: '#afafaf' }, styles.inputContainer]} >
+          <Image source={require('../../../../Assets/emoji-hamburger.png')} style={styles.restaurantImage}/>
+          <Text style={{ color: '#727272', fontFamily: 'Avenir-Black', fontSize: 15 }}>X1</Text>
+          <Text style={{ color: '#727272', fontFamily: 'Avenir-Black', fontSize: 15 }}>{price} DAI</Text>
+        </View>
+      )
+    } else if (food === "Hot Dog") {
+      return (
+        <View style={[{ borderColor: '#afafaf' }, styles.inputContainer]} >
+          <Image source={require('../../../../Assets/hotdog.png')} style={styles.restaurantImage}/>
+          <Text style={{ color: '#727272', fontFamily: 'Avenir-Black', fontSize: 15 }}>X1</Text>
+          <Text style={{ color: '#727272', fontFamily: 'Avenir-Black', fontSize: 15 }}>{price} DAI</Text>
+        </View>
+      )
+    } else if (food === "Beer") {
+      return (
+        <View style={[{ borderColor: '#afafaf' }, styles.inputContainer]} >
+          <Image source={require('../../../../Assets/beer.png')} style={styles.restaurantImage}/>
+          <Text style={{ color: '#727272', fontFamily: 'Avenir-Black', fontSize: 15 }}>X1</Text>
+          <Text style={{ color: '#727272', fontFamily: 'Avenir-Black', fontSize: 15 }}>{price} DAI</Text>
+        </View>
+      )
+    } else if (food === "Fries") {
+      return (
+        <View style={[{ borderColor: '#afafaf' }, styles.inputContainer]} >
+          <Image source={require('../../../../Assets/fries.png')} style={styles.restaurantImage}/>
+          <Text style={{ color: '#727272', fontFamily: 'Avenir-Black', fontSize: 15 }}>X1</Text>
+          <Text style={{ color: '#727272', fontFamily: 'Avenir-Black', fontSize: 15 }}>{price} DAI</Text>
+        </View>
+      )
+    }
+  }
 
   return (
     <TouchableOpacity onPress={sendOrder} style={styles.kittyContainer}>
@@ -37,11 +60,7 @@ const ForkDapplet = () => {
         <Text style={{
           color: 'black', fontFamily: 'Avenir-Black', fontSize: 20, margin: 20,
         }}>Your Order</Text>
-        <View style={[{ borderColor: '#afafaf' }, styles.inputContainer]} >
-          <Image source={require('../../../../Assets/emoji-hamburger.png')} style={styles.restaurantImage}/>
-          <Text style={{ color: '#727272', fontFamily: 'Avenir-Black', fontSize: 15 }}>X1</Text>
-          <Text style={{ color: '#727272', fontFamily: 'Avenir-Black', fontSize: 15 }}>10 DAI</Text>
-        </View>
+        {order()}
       </View>
     </TouchableOpacity>
   );
@@ -77,7 +96,7 @@ export default class Menu extends React.Component {
             flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', flex: 1, width,
           }}>
             <TouchableOpacity onPress={() => navigation.navigate('SendSheet', {
-              dappletData: { component: () => ForkDapplet() }, address: '0x89FFF8C75AE3f84B107e1C704c3147a8414Dd417', isContract: true, asset: 'ETH', assetAmount: '0.001',
+              dappletData: { component: () => ForkDapplet('Hamburger', '10') }, address: '0x89FFF8C75AE3f84B107e1C704c3147a8414Dd417', isContract: true, asset: 'ETH', foodItem: 'Hamburger', assetAmount: '0.001',
             })} style={styles.kittyContainer}>
               <View style={[{ borderColor: this.state.borderColor }, styles.inputContainer]}>
                 <View>
@@ -86,14 +105,16 @@ export default class Menu extends React.Component {
                     color: 'black', fontFamily: 'Avenir-Black', fontSize: 25, marginTop: 10,
                   }}>Hamburger</Text>
                 </View>
-                <TouchableOpacity style={{
+                <View style={{
                   flexDirection: 'row', width: 100, height: 40, borderRadius: 25, alignItems: 'center', backgroundColor: '#fafafa', borderColor: '#cccccc', borderWidth: 1, justifyContent: 'center',
                 }}>
                   <Text>10 DAI</Text>
-                </TouchableOpacity>
+                </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Menu', {})} style={styles.kittyContainer}>
+            <TouchableOpacity onPress={() => navigation.navigate('SendSheet', {
+              dappletData: { component: () => ForkDapplet('Fries', '5') }, address: '0x89FFF8C75AE3f84B107e1C704c3147a8414Dd417', isContract: true, asset: 'ETH', foodItem: 'Fries', assetAmount: '0.001',
+            })} style={styles.kittyContainer}>
               <View style={[{ borderColor: this.state.borderColor }, styles.inputContainer]}>
                 <View>
                   <Image source={require('../../../../Assets/fries.png')} style={styles.restaurantImage}/>
@@ -101,14 +122,16 @@ export default class Menu extends React.Component {
                     color: 'black', fontFamily: 'Avenir-Black', fontSize: 25, marginTop: 10,
                   }}>Fries</Text>
                 </View>
-                <TouchableOpacity style={{
+                <View style={{
                   flexDirection: 'row', width: 100, height: 40, borderRadius: 25, alignItems: 'center', backgroundColor: '#fafafa', borderColor: '#cccccc', borderWidth: 1, justifyContent: 'center',
                 }}>
                   <Text>5 DAI</Text>
-                </TouchableOpacity>
+                </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Menu', {})} style={styles.kittyContainer}>
+            <TouchableOpacity onPress={() => navigation.navigate('SendSheet', {
+              dappletData: { component: () => ForkDapplet('Hot Dog', '8') }, address: '0x89FFF8C75AE3f84B107e1C704c3147a8414Dd417', isContract: true, asset: 'ETH', foodItem: 'Hot Dog', assetAmount: '0.001',
+            })} style={styles.kittyContainer}>
               <View style={[{ borderColor: this.state.borderColor }, styles.inputContainer]}>
                 <View>
                   <Image source={require('../../../../Assets/hotdog.png')} style={styles.restaurantImage}/>
@@ -116,14 +139,16 @@ export default class Menu extends React.Component {
                     color: 'black', fontFamily: 'Avenir-Black', fontSize: 25, marginTop: 10,
                   }}>Hot Dog</Text>
                 </View>
-                <TouchableOpacity style={{
+                <View style={{
                   flexDirection: 'row', width: 100, height: 40, borderRadius: 25, alignItems: 'center', backgroundColor: '#fafafa', borderColor: '#cccccc', borderWidth: 1, justifyContent: 'center',
                 }}>
                   <Text>8 DAI</Text>
-                </TouchableOpacity>
+                </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Menu', {})} style={styles.kittyContainer}>
+            <TouchableOpacity onPress={() => navigation.navigate('SendSheet', {
+              dappletData: { component: () => ForkDapplet('Beer', '4') }, address: '0x89FFF8C75AE3f84B107e1C704c3147a8414Dd417', isContract: true, asset: 'ETH', foodItem: 'Beer', assetAmount: '0.001',
+            })} style={styles.kittyContainer}>
               <View style={[{ borderColor: this.state.borderColor }, styles.inputContainer]}>
                 <View>
                   <Image source={require('../../../../Assets/beer.png')} style={styles.restaurantImage}/>
@@ -131,11 +156,11 @@ export default class Menu extends React.Component {
                     color: 'black', fontFamily: 'Avenir-Black', fontSize: 25, marginTop: 10,
                   }}>Beer</Text>
                 </View>
-                <TouchableOpacity style={{
+                <View style={{
                   flexDirection: 'row', width: 100, height: 40, borderRadius: 25, alignItems: 'center', backgroundColor: '#fafafa', borderColor: '#cccccc', borderWidth: 1, justifyContent: 'center',
                 }}>
                   <Text>4 DAI</Text>
-                </TouchableOpacity>
+                </View>
               </View>
             </TouchableOpacity>
           </View>
