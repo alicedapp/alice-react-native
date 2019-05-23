@@ -111,9 +111,7 @@ export default class UnderlineField extends Component {
   renderPlaceholder() {
     return (
       <Placeholder>
-        <SFProText>Ethereum Address (</SFProText>
-        <SFMono>0x</SFMono>
-        <SFProText>...)</SFProText>
+        <SFProText>{this.props.placeholder}</SFProText>
       </Placeholder>
     );
   }

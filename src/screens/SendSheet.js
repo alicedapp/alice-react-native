@@ -22,6 +22,7 @@ import ethers from 'ethers';
 const firebase = require("firebase");
 // Required for side-effects
 require("firebase/firestore");
+import {contractInteraction} from '../utils/transactions';
 
 let { width, height } = Dimensions.get('window')
 
@@ -407,157 +408,6 @@ class SendSheet extends Component {
       });
   };
 
-  contractInteraction = async () => {
-    const {
-      navigation,
-    } = this.props;
-
-    console.log('ethers provider: ', ethers.providers.getDefaultProvider());
-    // Connect to the network
-    const provider = ethers.providers.getDefaultProvider();
-
-    const ContractAddress = '0x89FFF8C75AE3f84B107e1C704c3147a8414Dd417';
-
-    const abi = [
-      {
-        constant: false,
-        inputs: [],
-        name: 'cookingOrder',
-        outputs: [],
-        payable: false,
-        stateMutability: 'nonpayable',
-        type: 'function',
-      },
-      {
-        constant: false,
-        inputs: [],
-        name: 'finishOrder',
-        outputs: [],
-        payable: false,
-        stateMutability: 'nonpayable',
-        type: 'function',
-      },
-      {
-        constant: false,
-        inputs: [
-          {
-            name: '_foodItem',
-            type: 'string',
-          },
-          {
-            name: '_name',
-            type: 'string',
-          },
-        ],
-        name: 'setOrder',
-        outputs: [],
-        payable: false,
-        stateMutability: 'nonpayable',
-        type: 'function',
-      },
-      {
-        constant: false,
-        inputs: [
-          {
-            name: '_orderStatus',
-            type: 'string',
-          },
-        ],
-        name: 'setOrderStatus',
-        outputs: [],
-        payable: false,
-        stateMutability: 'nonpayable',
-        type: 'function',
-      },
-      {
-        anonymous: false,
-        inputs: [
-          {
-            indexed: false,
-            name: 'foodItem',
-            type: 'string',
-          },
-          {
-            indexed: false,
-            name: 'name',
-            type: 'string',
-          },
-        ],
-        name: 'FoodFinished',
-        type: 'event',
-      },
-      {
-        anonymous: false,
-        inputs: [
-          {
-            indexed: false,
-            name: 'foodItem',
-            type: 'string',
-          },
-          {
-            indexed: false,
-            name: 'name',
-            type: 'string',
-          },
-        ],
-        name: 'OrderReceived',
-        type: 'event',
-      },
-      {
-        anonymous: false,
-        inputs: [
-          {
-            indexed: false,
-            name: 'orderStatus',
-            type: 'string',
-          },
-        ],
-        name: 'OrderStatus',
-        type: 'event',
-      },
-      {
-        constant: true,
-        inputs: [],
-        name: 'getOrder',
-        outputs: [
-          {
-            name: '',
-            type: 'string',
-          },
-          {
-            name: '',
-            type: 'string',
-          },
-          {
-            name: '',
-            type: 'string',
-          },
-        ],
-        payable: false,
-        stateMutability: 'view',
-        type: 'function',
-      },
-    ];
-
-
-    const contract = new ethers.Contract(ContractAddress, abi, provider);
-    console.log(contract);
-
-    const wallet = await loadWallet();
-
-    const contractWithSigner = contract.connect(wallet);
-
-    const tx = await contractWithSigner.finishOrder();
-
-    console.log(tx.hash);
-    if (tx.hash) {
-      navigation.navigate('ProfileScreen');
-      this.sendOrder();
-    }
-
-    const txConfirm = await tx.wait();
-  }
-
   onLongPressSendContractInteraction = () => {
     const { sendUpdateGasPrice } = this.props;
     const { sendLongPressProgress } = this.state;
@@ -568,7 +418,7 @@ class SendSheet extends Component {
     }).start();
 
     if (isIphoneX()) {
-      this.contractInteraction();
+      contractInteraction();
     } else {
       const options = this.getTransactionSpeedOptions();
 
@@ -579,7 +429,7 @@ class SendSheet extends Component {
         if (buttonIndex > 0) {
           sendUpdateGasPrice(options[buttonIndex].value);
 
-          this.contractInteraction();
+          contractInteraction();
         }
       });
     }
