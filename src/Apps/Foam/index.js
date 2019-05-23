@@ -2,267 +2,70 @@ import React from 'react';
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, Dimensions, View } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import MapView, {Callout} from 'react-native-maps';
-let {height, width} = Dimensions.get('window')
+let {height, width} = Dimensions.get('window');
+import MapboxGL from '@mapbox/react-native-mapbox-gl';
+import App from './App';
 
+
+import sheet from './styles/sheet';
+import {onSortOptions} from './utils';
+
+import BaseExamplePropTypes from './components/common/BaseExamplePropTypes';
+import TabBarPage from './components/common/TabBarPage';
 
 class HomeScreen extends React.Component {
-  state = {
-    region: {
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    },
-    boxShow: 1
+  static propTypes = {
+    ...BaseExamplePropTypes,
   };
 
-  toggleBox = num => {
-    this.setState({boxShow: num})
+  constructor(props) {
+    super(props);
+
+    this._mapOptions = Object.keys(MapboxGL.StyleURL)
+      .map(key => {
+        return {
+          label: key,
+          data: MapboxGL.StyleURL[key],
+        };
+      })
+      .sort(onSortOptions);
+
+    this.state = {
+      styleURL: this._mapOptions[0].data,
+    };
+
+    this.onMapChange = this.onMapChange.bind(this);
   }
 
-  onRegionChange = (region) => {
-    this.setState({ region });
+  onMapChange(index, styleURL) {
+    this.setState({styleURL});
   }
 
   render() {
-    const mapStyle = [
-      {
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#212121',
-          },
-        ],
-      },
-      {
-        elementType: 'labels.icon',
-        stylers: [
-          {
-            visibility: 'off',
-          },
-        ],
-      },
-      {
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#757575',
-          },
-        ],
-      },
-      {
-        elementType: 'labels.text.stroke',
-        stylers: [
-          {
-            color: '#212121',
-          },
-        ],
-      },
-      {
-        featureType: 'administrative',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#757575',
-          },
-        ],
-      },
-      {
-        featureType: 'administrative.country',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#9e9e9e',
-          },
-        ],
-      },
-      {
-        featureType: 'administrative.land_parcel',
-        stylers: [
-          {
-            visibility: 'off',
-          },
-        ],
-      },
-      {
-        featureType: 'administrative.locality',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#bdbdbd',
-          },
-        ],
-      },
-      {
-        featureType: 'poi',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#757575',
-          },
-        ],
-      },
-      {
-        featureType: 'poi.park',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#181818',
-          },
-        ],
-      },
-      {
-        featureType: 'poi.park',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#616161',
-          },
-        ],
-      },
-      {
-        featureType: 'poi.park',
-        elementType: 'labels.text.stroke',
-        stylers: [
-          {
-            color: '#1b1b1b',
-          },
-        ],
-      },
-      {
-        featureType: 'road',
-        elementType: 'geometry.fill',
-        stylers: [
-          {
-            color: '#2c2c2c',
-          },
-        ],
-      },
-      {
-        featureType: 'road',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#8a8a8a',
-          },
-        ],
-      },
-      {
-        featureType: 'road.arterial',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#373737',
-          },
-        ],
-      },
-      {
-        featureType: 'road.highway',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#3c3c3c',
-          },
-        ],
-      },
-      {
-        featureType: 'road.highway.controlled_access',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#4e4e4e',
-          },
-        ],
-      },
-      {
-        featureType: 'road.local',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#616161',
-          },
-        ],
-      },
-      {
-        featureType: 'transit',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#757575',
-          },
-        ],
-      },
-      {
-        featureType: 'water',
-        elementType: 'geometry',
-        stylers: [
-          {
-            color: '#000000',
-          },
-        ],
-      },
-      {
-        featureType: 'water',
-        elementType: 'labels.text.fill',
-        stylers: [
-          {
-            color: '#3d3d3d',
-          },
-        ],
-      },
-    ];
-
     return (
-      <MapView
-        provider={MapView.PROVIDER_GOOGLE}
-        style={{ flex: 1 }}
-        region={this.state.region}
-        onRegionChange={this.onRegionChange}
-        customMapStyle={mapStyle}
+      <TabBarPage
+        {...this.props}
+        scrollable
+        options={this._mapOptions}
+        onOptionPress={this.onMapChange}
       >
-        <Callout style={{flex: 1 }}>
-          <View style={{
-            margin: 20, marginTop: 50, marginBottom: 0, backgroundColor: 'transparent',
-          }}>
-            <TouchableOpacity style={{}} onPress={() => navigation.navigate('Apps')}>
-              <Image source={require('../../../Assets/back-button.png')} style={{ resizeMode: 'contain', width: 20, height: 20 }}/>
-            </TouchableOpacity>
-          </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-            <View style={styles.blackHeaderModule}>
-              <Text style={{color: 'white'}}>Main Ethereum Network</Text>
-            </View>
-            <View style={styles.blackHeaderModule}>
-              <Text style={{color: 'white'}}>100.00</Text>
-              <View>
-                <Text style={{color: 'white', fontSize: 10}}>FOAM</Text>
-              </View>
-            </View>
-          </View>
-          <TextInput placeholder={'Search'} placeholderTextColor='#636363' style={styles.whiteSearch}/>
-          <View style={styles.whiteBox}>
-            <View style={{}}>
-              <Text style={{fontSize: 20, color: 'black'}}>Add a POI or Signal for Location Services</Text>
-              <Text style={{fontSize: 14}}>Click anywhere on the map to start.</Text>
-            </View>
-            <View style={{}}>
-              <TouchableOpacity onPress={() => this.toggleBox(1)}>
-                <Text style={{fontSize: 20}}>X</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </Callout>
-      </MapView>
+        <MapboxGL.MapView
+          showUserLocation={true}
+          zoomLevel={12}
+          userTrackingMode={MapboxGL.UserTrackingModes.Follow}
+          styleURL={this.state.styleURL}
+          style={sheet.matchParent}
+        />
+      </TabBarPage>
     );
   }
 }
 
+
 class SettingsScreen extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Trading Coming Soon!</Text>
-      </View>
+      <App/>
     );
   }
 }

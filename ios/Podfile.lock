@@ -52,11 +52,11 @@ PODS:
   - GoogleMaps/Base (2.5.0)
   - GoogleMaps/Maps (2.5.0):
     - GoogleMaps/Base
-  - GoogleToolboxForMac/Defines (2.2.0)
-  - GoogleToolboxForMac/Logger (2.2.0):
-    - GoogleToolboxForMac/Defines (= 2.2.0)
-  - "GoogleToolboxForMac/NSData+zlib (2.2.0)":
-    - GoogleToolboxForMac/Defines (= 2.2.0)
+  - GoogleToolboxForMac/Defines (2.2.1)
+  - GoogleToolboxForMac/Logger (2.2.1):
+    - GoogleToolboxForMac/Defines (= 2.2.1)
+  - "GoogleToolboxForMac/NSData+zlib (2.2.1)":
+    - GoogleToolboxForMac/Defines (= 2.2.1)
   - GoogleUtilities (5.3.7):
     - GoogleUtilities/AppDelegateSwizzler (= 5.3.7)
     - GoogleUtilities/Environment (= 5.3.7)
@@ -93,6 +93,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - OneSignal (2.10.0)
   - Protobuf (3.7.0)
   - React (0.57.1):
     - React/Core (= 0.57.1)
@@ -107,7 +108,12 @@ PODS:
     - Google-Maps-iOS-Utils (= 2.1.0)
     - GoogleMaps (= 2.5.0)
     - React
+  - react-native-mapbox-gl (6.1.4):
+    - React
   - react-native-maps (0.24.0):
+    - React
+  - react-native-onesignal (3.2.13):
+    - OneSignal (= 2.10.0)
     - React
   - react-native-version-number (0.3.5):
     - React
@@ -146,7 +152,9 @@ DEPENDENCIES:
   - react-native-blur (from `../node_modules/react-native-blur`)
   - react-native-fast-image (from `../node_modules/react-native-fast-image`)
   - react-native-google-maps (from `../node_modules/react-native-maps`)
+  - "react-native-mapbox-gl (from `../node_modules/@mapbox/react-native-mapbox-gl`)"
   - react-native-maps (from `../node_modules/react-native-maps`)
+  - react-native-onesignal (from `../node_modules/react-native-onesignal`)
   - react-native-version-number (from `../node_modules/react-native-version-number`)
   - React/RCTImage (from `../node_modules/react-native`)
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
@@ -157,7 +165,7 @@ DEPENDENCIES:
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Crashlytics
     - Fabric
     - Firebase
@@ -172,6 +180,7 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GoogleUtilities
     - nanopb
+    - OneSignal
     - Protobuf
     - SDWebImage
 
@@ -184,8 +193,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-fast-image"
   react-native-google-maps:
     :path: "../node_modules/react-native-maps"
+  react-native-mapbox-gl:
+    :path: "../node_modules/@mapbox/react-native-mapbox-gl"
   react-native-maps:
     :path: "../node_modules/react-native-maps"
+  react-native-onesignal:
+    :path: "../node_modules/react-native-onesignal"
   react-native-version-number:
     :path: "../node_modules/react-native-version-number"
   RNDeviceInfo:
@@ -213,15 +226,18 @@ SPEC CHECKSUMS:
   Google-Maps-iOS-Utils: c32891ff472eaaa1fca032beedafa1a013af7875
   GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
-  GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
+  GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  OneSignal: 0f5ff711d9f25da54885e4ab06ef0abc221a46ef
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
   react-native-blur: c35c1f6c2c76db7108bde7ed343bd2b01d64e0c0
   react-native-fast-image: cba3d9bf9c2cf8ddb643d887a686c53a5dd90a2c
   react-native-google-maps: 77af0fa3b5325c72c107d054677911f6e6170496
+  react-native-mapbox-gl: b42480060cdcc515dfa3d8e403fb4dd32466a1b9
   react-native-maps: bb480348a3fe1e5a811fed1ba3387b329161c5cc
+  react-native-onesignal: 5bdaf1bd3141482b3376922aa0a854ad796f5683
   react-native-version-number: 36c0d8eb57a275a6239a860f8dbab3d18299b0e0
   RNDeviceInfo: 568c5641057313b4912d08a7742ff0b2f753ed5c
   RNFS: bbb1a64eb245763daf34aea86f97c97c4e85f74c
@@ -231,6 +247,6 @@ SPEC CHECKSUMS:
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: f1c9bf9395d9c52999fb8d9266c5baf2458ba221
+PODFILE CHECKSUM: d9f45afa2d6cb5f178f808c8447c67d8d2b68c0c
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
