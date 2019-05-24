@@ -1,0 +1,75 @@
+$white: #fff;
+$black: #000;
+
+// Gray
+$concrete-gray: #FAFAFA;
+$mercury-gray: #E1E1E1;
+$silver-gray: #C4C4C4;
+$chalice-gray: #AEAEAE;
+$dove-gray: #737373;
+$mine-shaft-gray: #2B2B2B;
+
+// Blue
+$zumthor-blue: #EBF4FF;
+$malibu-blue: #5CA2FF;
+$royal-blue: #2F80ED;
+
+// Purple
+$wisteria-purple: #DC6BE5;
+
+// Red
+$salmon-red: #FF6871;
+
+// Orange
+$pizazz-orange: #FF8F05;
+
+%col-nowrap {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+%row-nowrap {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+%primary-button {
+  font-size: 1rem;
+  min-width: 16rem;
+  padding: 1rem;
+  background-color: $royal-blue;
+  cursor: pointer;
+  border-radius: 3rem;
+  color: $white;
+  outline: none;
+  border: 1px solid transparent;
+  user-select: none;
+  transition: background-color 300ms ease-in-out;
+
+  &:hover {
+    background-color: lighten($royal-blue, 5);
+  }
+
+  &:active {
+    background-color: darken($royal-blue, 5);
+  }
+
+  &:disabled {
+    background-color: $mercury-gray;
+  }
+
+}
+
+%borderless-input {
+  color: $mine-shaft-gray;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  flex: 1 1 auto;
+  width: 0;
+
+
+  &::placeholder {
+    color: $mercury-gray;
+  }
+}

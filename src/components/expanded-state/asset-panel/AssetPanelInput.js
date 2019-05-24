@@ -59,7 +59,8 @@ const AssetPanelInput = ({
   icon,
   label,
   onPress,
-  placeholder
+  placeholder,
+  onChange
 }) => (
   <Container
     activeOpacity={0.5}
@@ -70,6 +71,7 @@ const AssetPanelInput = ({
       <AddressInput
         autoFocus
         placeholder={placeholder}
+        onChange={onChange}
       />
     </AddressInputContainer>
   </Container>

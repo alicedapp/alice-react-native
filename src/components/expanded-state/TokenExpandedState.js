@@ -17,7 +17,7 @@ import {
 } from './asset-panel';
 import FloatingPanels from './FloatingPanels';
 import Input from '../inputs/Input';
-import { contractInteraction } from '../../utils/transactions';
+import { contractInteraction, contractInteractionWithVar } from '../../utils/transactions';
 import WethABI from '../../AppABIs/wethAbi';
 
 console.log(WethABI);
@@ -25,12 +25,18 @@ console.log(WethABI);
 
 class TokenExpandedState extends Component {
   state = {
-    amount: ''
+    wrapAmount: '',
+    unwrapAmount: '',
   }
 
-  sendTransaction = () => {
-    contractInteraction('0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', WethABI, 'deposit', this.state.amount);
-    this.props.navigation.navigate('Profile');
+  wrap = () => {
+    contractInteraction('0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', WethABI, 'deposit', {value: parseInt(this.state.wrapAmount*10e17)});
+    this.props.navigation.navigate('ProfileScreen');
+  }
+
+  unwrap = () => {
+    contractInteractionWithVar('0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', WethABI, 'withdraw', parseInt(this.state.wrapAmount*10e17));
+    this.props.navigation.navigate('ProfileScreen');
   }
 
   render() {
@@ -39,6 +45,7 @@ class TokenExpandedState extends Component {
       price,
       subtitle,
       title,
+      navigation
     } = this.props;
     return (
       <FloatingPanels>
@@ -57,8 +64,8 @@ class TokenExpandedState extends Component {
             <AssetPanel>
               <AssetPanelInput
                 placeholder="Enter Amount to Wrap"
-                onChange={e => this.setState({amount: e})}
-                value={this.state.amount}
+                onChange={e => this.setState({wrapAmount: e})}
+                value={this.state.wrapAmount}
                 keyboardType={'numeric'}
               />
             </AssetPanel>
@@ -66,15 +73,25 @@ class TokenExpandedState extends Component {
               style={{ flex: 1 }}
               icon="send"
               label="Wrap"
-              onPress={this.sendTransaction}
+              onPress={this.wrap}
             />
           </View>
           }
-          { title === 'Wrapped Ether' && <AssetPanelAction
-            icon="send"
-            label="Unwrap"
-            onPress={onPressSend}
-          /> }
+          { title === 'Wrapped Ether' && <View style={{ flexDirection: 'column' }}>
+            <AssetPanel>
+              <AssetPanelInput
+                placeholder="Enter Amount to Wrap"
+                onChange={e => this.setState({unwrapAmount: e})}
+                value={this.state.unwrapAmount}
+                keyboardType={'numeric'}
+              />
+            </AssetPanel>
+            <AssetPanelAction
+              icon="send"
+              label="Unwrap"
+              onPress={this.unwrap}
+            />
+          </View> }
           { title === '0x Protocol Token' && <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <View style={styles.appIcon}>
               <TouchableOpacity style={styles.appSquare} onPress={() => this.props.navigation.navigate('RadarRelay')}>
