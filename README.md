@@ -1,4 +1,6 @@
-# alice
+**This is the Proof Of Concept build of Alice which has paved the way for the AliceX repo and as such is now deprecated**
+
+# Alice
 Build native mobile dapps into a crypto wallet
 
 How to start building
