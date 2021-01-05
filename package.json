@@ -19,7 +19,7 @@
     "@mapbox/react-native-mapbox-gl": "https://github.com/nitaliano/react-native-mapbox-gl#master",
     "@tradle/react-native-http": "^2.0.0",
     "assert": "^1.4.1",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "balance-common": "^0.6.33",
     "bignumber.js": "^8.0.2",
     "browserify-zlib": "^0.1.4",
