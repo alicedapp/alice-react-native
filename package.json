@@ -42,7 +42,7 @@
     "inherits": "^2.0.3",
     "lodash": "^4.17.11",
     "path-browserify": "0.0.0",
-    "postcss": "^7.0.13",
+    "postcss": "^7.0.36",
     "process": "^0.11.10",
     "prop-types": "^15.6.1",
     "punycode": "^1.4.1",
